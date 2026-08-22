@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>교재로 돌아가는 중…</title>
+</head>
+<body>
+  <p>교재 첫 화면으로 돌아갑니다.</p>
+  <script>
+    const parts = location.pathname.split("/").filter(Boolean);
+    const base = location.hostname.endsWith("github.io") && parts.length ? `/${parts[0]}/` : "/";
+    location.replace(`${base}#welcome`);
+  </script>
+  <p><a href="./">자동으로 이동하지 않으면 여기를 누르세요.</a></p>
+</body>
+</html>

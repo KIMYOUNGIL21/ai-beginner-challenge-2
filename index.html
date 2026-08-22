@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 왕초보 챌린지 2기 — Claude Code Desktop으로 매일 결과물을 만드는 7일 교재">
+  <title>AI 왕초보 챌린지 2기</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="menuButton" class="menu-button" aria-label="목차 열기" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="brand" href="#welcome">AI 왕초보 챌린지 <strong>2기</strong></a>
+    <span class="top-note">한 번에 한 단계씩</span>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="교재 목차">
+      <div class="start-note">
+        <strong>처음 오셨나요?</strong>
+        반드시 <b>시작 전 준비</b>부터 보세요.
+      </div>
+      <nav id="lessonNav"></nav>
+      <div class="help-note">
+        <b>5분 넘게 막혔다면</b><br>
+        컴퓨터 화면을 휴대폰으로 찍어 참가자방에 올려 주세요.
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="loading" class="loading">교재를 불러오고 있습니다…</div>
+      <article id="content" class="content" hidden></article>
+      <div class="pager" id="pager" hidden>
+        <button id="prevButton" class="pager-button secondary">← 이전</button>
+        <button id="completeButton" class="pager-button complete">✓ 여기까지 봤어요</button>
+        <button id="nextButton" class="pager-button">다음 →</button>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">복사했습니다</div>
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+
+  <script src="assets/markdown-fallback.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@16.2.1/lib/marked.umd.min.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
