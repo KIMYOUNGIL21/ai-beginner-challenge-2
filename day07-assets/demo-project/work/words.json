@@ -1,0 +1,12 @@
+[
+  {"text":"처음에는", "start":0.1, "end":0.8, "sentence":0},
+  {"text":"영상 조립이", "start":0.8, "end":1.8, "sentence":0},
+  {"text":"어려워 보입니다.", "start":1.8, "end":3.5, "sentence":0},
+  {"text":"하지만", "start":3.9, "end":4.5, "sentence":1},
+  {"text":"재료와 순서를", "start":4.5, "end":5.8, "sentence":1},
+  {"text":"나누면 한 단계씩", "start":5.8, "end":7.6, "sentence":1},
+  {"text":"확인할 수 있습니다.", "start":7.6, "end":9.4, "sentence":1},
+  {"text":"오늘 우리는", "start":9.7, "end":10.7, "sentence":2},
+  {"text":"첫 번째 세로 쇼츠를", "start":10.7, "end":12.4, "sentence":2},
+  {"text":"완성했습니다.", "start":12.4, "end":13.8, "sentence":2}
+]

@@ -1,14 +1,15 @@
 const lessons = [
   { id: "welcome", day: "안내", title: "처음 오신 분께", file: "00_환영합니다.md" },
   { id: "day0", day: "준비", title: "설치부터 첫 폴더까지", file: "Day00_시작전준비.md" },
+  { id: "terms", day: "준비", title: "왕초보 용어사전", file: "Day00_왕초보용어사전.md" },
   { id: "rules", day: "공통", title: "매일 인증하는 방법", file: "00_오픈카톡_인증규칙.md" },
   { id: "day1", day: "1일", title: "Artifact 진단기", file: "Day01_Artifact진단기_실행서.md" },
-  { id: "day2", day: "2일", title: "레퍼런스 분석", file: "Day02_레퍼런스분석.md" },
-  { id: "day3", day: "3일", title: "내 콘텐츠 엔진", file: "Day03_콘텐츠엔진.md" },
-  { id: "day4", day: "4일", title: "카드뉴스 공장", file: "Day04_카드뉴스공장.md" },
-  { id: "day5", day: "5일", title: "미니 자동화", file: "Day05_미니자동화.md" },
-  { id: "day6", day: "6일", title: "나만의 Skill", file: "Day06_나만의스킬.md" },
-  { id: "day7", day: "7일", title: "AI 쇼츠 완성", file: "Day07_AI쇼츠.md" },
+  { id: "day2", day: "2일", title: "Projects 작업방", file: "Day02_Projects_실행서_v2.md" },
+  { id: "day3", day: "3일", title: "Design 홍보물", file: "Day03_Design_실행서_v2.md" },
+  { id: "day4", day: "4일", title: "Cowork 안내문", file: "Day04_Cowork_실행서_v2.md" },
+  { id: "day5", day: "5일", title: "Code 웹 도구", file: "Day05_Code_실행서_v2.md" },
+  { id: "day6", day: "6일", title: "Skill + Connector", file: "Day06_Skills_Connectors_실행서_v2.md" },
+  { id: "day7", day: "7일", title: "Dispatch + AI 쇼츠", file: "Day07_Dispatch_Shorts_실행서_v2.md" },
   { id: "references", day: "참고", title: "공식 레퍼런스", file: "01_레퍼런스_목록.md" }
 ];
 
