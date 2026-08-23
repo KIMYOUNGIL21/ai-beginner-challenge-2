@@ -2,7 +2,7 @@ const lessons = [
   { id: "welcome", day: "안내", title: "처음 오신 분께", file: "00_환영합니다.md" },
   { id: "day0", day: "준비", title: "설치부터 첫 폴더까지", file: "Day00_시작전준비.md" },
   { id: "rules", day: "공통", title: "매일 인증하는 방법", file: "00_오픈카톡_인증규칙.md" },
-  { id: "day1", day: "1일", title: "휴대폰 웹 도구", file: "Day01_웹도구.md" },
+  { id: "day1", day: "1일", title: "Artifact 진단기", file: "Day01_Artifact진단기_실행서.md" },
   { id: "day2", day: "2일", title: "레퍼런스 분석", file: "Day02_레퍼런스분석.md" },
   { id: "day3", day: "3일", title: "내 콘텐츠 엔진", file: "Day03_콘텐츠엔진.md" },
   { id: "day4", day: "4일", title: "카드뉴스 공장", file: "Day04_카드뉴스공장.md" },
