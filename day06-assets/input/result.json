@@ -1,8 +1,8 @@
 {
   "day": "Day 6",
-  "nickname": "고래",
-  "title": "내 첫 Claude Code Skill",
-  "result": "한 줄 명령으로 오픈카톡 인증 카드를 만들었습니다.",
-  "learned": "반복하던 순서를 SKILL.md에 저장하면 다시 사용할 수 있습니다.",
-  "next": "내 업종에 맞는 항목으로 바꾸기"
+  "nickname": "내닉네임",
+  "title": "나의 첫 Skill 인증",
+  "result": "브라우저에서 무설치 인증 카드를 만들었습니다.",
+  "learned": "Skill이 같은 입력과 검수 순서를 반복하는 방법을 배웠습니다.",
+  "next": "내 실제 결과로 한 번 더 만들기"
 }

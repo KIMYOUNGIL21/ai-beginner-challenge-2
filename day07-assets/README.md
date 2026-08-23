@@ -1,6 +1,8 @@
 # Day 7 배포 패키지
 
-`ai-shorts/`는 운영 중인 `/ai-shorts` Skill 패키지를 그대로 복사한 기준본이다. 수강 중 코드를 새로 설계하지 않는다.
+**수강생은 먼저 [`README_FIRST.md`](README_FIRST.md)를 엽니다.** 이 문서는 운영자와 문제 해결용 기술 참고입니다.
+
+`ai-shorts/`는 운영 원본 스크립트 기반의 교육용 고정본이다. `SKILL.md`의 키 등록 부분은 API 키를 채팅에 붙여넣지 않는 교육용 보안 방식으로 수정했다. 수강 중 코드를 새로 설계하지 않는다.
 
 동기화 시각과 체크섬은 [`AI_SHORTS_VERSION.md`](AI_SHORTS_VERSION.md)에 기록했다.
 
@@ -24,7 +26,7 @@ Mac:
 cd demo-project
 AI_SHORTS_DIR="$HOME/.claude/skills/ai-shorts"
 "$AI_SHORTS_DIR/.venv/bin/python" "$AI_SHORTS_DIR/scripts/check.py" scenes.json
-"$AI_SHORTS_DIR/.venv/bin/python" "$AI_SHORTS_DIR/scripts/build.py" scenes.json work/ --out D7_demo_쇼츠.mp4
+"$AI_SHORTS_DIR/.venv/bin/python" "$AI_SHORTS_DIR/scripts/build.py" scenes.json work/ --out D7_demo_short.mp4
 ```
 
 Windows PowerShell:
@@ -33,9 +35,11 @@ Windows PowerShell:
 Set-Location demo-project
 $aiShortsDir = Join-Path $HOME ".claude\skills\ai-shorts"
 & (Join-Path $aiShortsDir ".venv\Scripts\python.exe") (Join-Path $aiShortsDir "scripts\check.py") scenes.json
-& (Join-Path $aiShortsDir ".venv\Scripts\python.exe") (Join-Path $aiShortsDir "scripts\build.py") scenes.json work --out D7_demo_쇼츠.mp4
+& (Join-Path $aiShortsDir ".venv\Scripts\python.exe") (Join-Path $aiShortsDir "scripts\build.py") scenes.json work --out D7_demo_short.mp4
 ```
 
 데모에는 Typecast 키가 필요 없다. `tts.py`를 실행하지 않고 제공 음성과 `words.json`을 사용한다.
+
+실제 Typecast 호출 전에 `TYPECAST_SETUP.md`의 로컬 보안 등록을 사용한다. 실제 키를 Claude 채팅에 붙여넣지 않는다.
 
 장면 그래픽은 교재용으로 직접 만든 HTML/CSS 원본을 FFmpeg 모션 영상으로 바꾼 것이다. 외부 사진·영상·음악은 사용하지 않았다. 자세한 기록은 [`demo-project/licenses/SOURCES.md`](demo-project/licenses/SOURCES.md)에서 확인한다.

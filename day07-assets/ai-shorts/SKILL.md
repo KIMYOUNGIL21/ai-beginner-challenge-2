@@ -43,13 +43,17 @@ description: Produce a 1-2 minute Korean YouTube Short end to end, and handle it
 Homebrew 설치처럼 사용자 확인이 필요한 것만 물어본다.
 전부 통과하면 다음에 뭘 하면 되는지 한 줄로 알려준다.
 
-### "타임캐스트 키 등록해줘: <키>"
+### Typecast 연결 요청
 
-`~/.zshrc`에 `TYPECAST_API_KEY`와 `TYPECAST_VOICE`를 추가한다
-(보이스 기본값 `tc_69fc0cff784968297fb45daa`). 이미 있으면 값만 교체한다.
-현재 세션에서도 쓰도록 환경변수를 설정하고, `setup.sh`로 확인한다.
+**실제 API 키를 채팅으로 받지 않는다.** 사용자가 키를 메시지에 붙이려 하면 중단하고
+배포 루트의 `TYPECAST_SETUP.md`와 운영체제별 로컬 등록 스크립트를 안내한다.
 
-**키를 대화에 다시 출력하지 않는다.** 등록됐다는 사실만 알린다.
+- Mac: `register_typecast_key_mac.sh`
+- Windows: `register_typecast_key_windows.ps1`
+
+등록 결과는 `~/.config/ai-shorts/secrets.env`에 저장된다. 값은 읽거나 출력하지 않고,
+파일 존재와 권한만 확인한다. Typecast 명령을 실행하는 프로세스에서만 이 파일을
+불러온다. 프로젝트 파일, `CLAUDE.md`, `SKILL.md`, Git 저장소에 키를 복사하지 않는다.
 
 ### "쇼츠 스킬을 어디서든 쓸 수 있게 설치해줘"
 
@@ -73,8 +77,11 @@ Homebrew 설치처럼 사용자 확인이 필요한 것만 물어본다.
 ## 2. 내레이션 — Typecast Timestamp TTS
 
 ```bash
-export TYPECAST_API_KEY=...        # studio.typecast.ai/developers/api
-python3 scripts/tts.py script.txt work/ --voice tc_xxxxxxxx
+# 배포 루트에서 Mac
+bash run_tts_secure_mac.sh script.txt work/ tc_xxxxxxxx
+
+# 배포 루트에서 Windows PowerShell
+.\run_tts_secure_windows.ps1 -ScriptFile script.txt -WorkDir work -VoiceId tc_xxxxxxxx
 ```
 
 `work/narration.wav` + `work/words.json`(단어별 start/end)이 나온다.
@@ -114,15 +121,15 @@ for x in w:
 **`prompts.md`** — 사람이 Flow에 붙여넣을 것. 씬마다 이 형식으로:
 
 ````
-### C4 · 8초 생성 → 6.8초 사용 · 연쇄 4단
+### C4 · 6.8초 사용 · 연쇄 4단
 ```
 (프롬프트 전문 — 코드블록에 넣어 복사가 한 번에 되게)
 ```
 ````
 
-씬 번호와 **생성 길이**를 제목에 적는다. Flow에서 길이를 그걸로 맞춘다.
+씬 번호와 **사용 길이**를 제목에 적는다. 현재 Flow에는 별도 길이 선택이 없고 확인한 기본 결과는 약 8초다. 화면이 바뀌면 실제 결과 길이를 따른다. 결과가 사용 길이보다 짧으면 그 컷만 다시 만들고, 충분히 길면 조립 단계에서 뒤를 버린다.
 
-**`scenes.json`** — 생성 길이가 아니라 **사용 길이**를 적는다. 값은 2번에서
+**`scenes.json`** — **사용 길이**를 적는다. 값은 2번에서
 나온 문장 시작 시각의 차이로 정한다 (컷을 문장 중간이 아니라 시작점에 맞춰야
 전환과 말이 같이 떨어진다):
 
@@ -131,7 +138,7 @@ for x in w:
  {"file": "clips/c08.mp4", "use": 7.1}]
 ```
 
-합계가 내레이션 길이와 맞는지 확인한다. 안 맞으면 Flow에서 다시 뽑아야 한다.
+합계가 내레이션 길이와 맞는지 확인한다. 안 맞으면 사용 길이 합계를 먼저 조정하고, 실제 클립이 필요한 사용 길이보다 짧을 때만 그 컷을 다시 만든다.
 
 그리고 사용자에게 안내한다: [Flow](https://labs.google/fx/ko/tools/flow)에서
 **C1부터 순서대로** 생성하고 받은 파일은 이름 그대로 두라고. 순서만 지키면
@@ -180,7 +187,7 @@ python3 scripts/check.py scenes.json
 
 ## 한 번에 돌리기
 
-4~6번을 순서대로 실행하는 래퍼가 있다. 사용자가 클립을 다 받았다고 하면
+4–6번을 순서대로 실행하는 래퍼가 있다. 사용자가 클립을 다 받았다고 하면
 개별 스크립트 대신 이걸 써도 된다.
 
 ```bash

@@ -2,7 +2,8 @@ $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 if (-not (Get-Command py -ErrorAction SilentlyContinue)) { throw "Python 3가 없습니다. 운영자에게 알려 주세요." }
 if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue)) { throw "ffmpeg가 없습니다. 먼저 운영자 설치 안내를 받으세요." }
-$target = Join-Path $HOME ".claude\skills\ai-shorts"
+$installRoot = if ($env:AI_SHORTS_INSTALL_ROOT) { $env:AI_SHORTS_INSTALL_ROOT } else { Join-Path $HOME ".claude\skills" }
+$target = Join-Path $installRoot "ai-shorts"
 New-Item -ItemType Directory -Force (Split-Path $target) | Out-Null
 if (Test-Path $target) {
   $stamp = Get-Date -Format "yyyyMMdd-HHmmss"

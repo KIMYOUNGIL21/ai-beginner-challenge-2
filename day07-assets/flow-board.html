@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Day 7 · Flow 6컷 견본 보드</title>
+  <style>
+    :root{--ink:#172554;--muted:#52617a;--line:#dbeafe;--blue:#2563eb;--orange:#f97316;--bg:#eff6ff;--ok:#15803d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+    button,input{font:inherit}.wrap{width:min(1120px,94vw);margin:0 auto;padding:32px 0 70px}.hero{background:#172554;color:white;border-radius:28px;padding:34px;box-shadow:0 18px 50px #17255425}.eyebrow{color:#93c5fd;font-weight:800}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.05;margin:10px 0}.hero p{max-width:780px;font-size:18px;line-height:1.6;margin:12px 0}.warning{margin-top:20px;background:#fff7ed;color:#9a3412;border:2px solid #fed7aa;border-radius:16px;padding:16px;font-weight:750}.toolbar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:15px;margin:24px 0;padding:16px 18px;background:#ffffffed;border:2px solid var(--line);border-radius:18px;backdrop-filter:blur(8px)}.progress{display:flex;align-items:baseline;gap:10px}.progress strong{font-size:30px}.bar{flex:1;max-width:460px;height:13px;background:#dbeafe;border-radius:99px;overflow:hidden}.bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),#7c3aed);transition:width .25s}.reset{border:0;border-radius:12px;padding:11px 15px;background:#e2e8f0;color:#334155;font-weight:750;cursor:pointer}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{background:white;border:2px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 10px 30px #1725540d}.card.done{border-color:#86efac;background:#f0fdf4}.top{display:flex;justify-content:space-between;gap:15px}.cut{display:flex;align-items:center;gap:12px}.num{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;background:var(--ink);color:white;font-size:22px;font-weight:900}.role{font-weight:850;font-size:20px}.times{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.pill{border-radius:99px;padding:7px 11px;background:#eff6ff;color:#1d4ed8;font-weight:750}.use{background:#fff7ed;color:#c2410c}.prompt{white-space:pre-wrap;margin:0;padding:17px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:15px;color:#27364d;line-height:1.65;font-size:15px}.actions{display:flex;gap:10px;margin-top:15px}.copy{flex:1;border:0;border-radius:13px;padding:13px;background:var(--blue);color:white;font-weight:850;cursor:pointer}.copy.copied{background:var(--ok)}.check{display:flex;align-items:center;gap:8px;border-radius:13px;padding:10px 13px;background:#f1f5f9;font-weight:800;cursor:pointer}.check input{width:21px;height:21px}.tip{margin-top:24px;padding:20px;border-radius:20px;background:white;border:2px solid var(--line);line-height:1.65}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:#111827;color:white;padding:12px 18px;border-radius:12px;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:760px){.wrap{width:min(94vw,600px);padding-top:16px}.hero{padding:25px}.grid{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-wrap:wrap}.bar{order:3;flex-basis:100%;max-width:none}.top{align-items:flex-start}.actions{flex-direction:column}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">DAY 7 · FLOW 연습 보드</div>
+    <h1>한옥 처마 · 6컷 견본</h1>
+    <p>C1부터 순서대로 프롬프트를 복사해 Flow에서 세로 영상을 만들고, 다운로드가 끝날 때마다 완료를 체크하세요.</p>
+    <div class="warning">이것은 프롬프트 모양과 작업 순서를 보는 한옥 처마 견본입니다. 내 주제 영상에 그대로 복사하지 마세요. 실제 제작에서는 이 창을 닫고 my-short/prompts.md의 C1~C6을 복사합니다.</div>
+  </section>
+  <section class="toolbar" aria-label="진행률">
+    <div class="progress"><strong id="count">0 / 6</strong><span>완료</span></div>
+    <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+    <button class="reset" id="reset" type="button">완료 표시 초기화</button>
+  </section>
+  <section class="grid" id="cards"></section>
+  <section class="tip"><strong>카드 읽는 법</strong><br>현재 확인한 Flow 결과는 약 8초이고 별도 길이 선택칸은 없습니다. ‘사용 4.2초’는 조립 단계에서 결과의 앞 4.2초만 쓴다는 뜻입니다. 프롬프트 끝의 ‘한글이나 한국어 문자는 넣지 않는다’를 지우면 영상 속 가짜 글자가 자막과 겹칠 수 있습니다.</section>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite">프롬프트를 복사했습니다</div>
+<script>
+const cuts=[
+ {id:'C1',role:'훅',use:'4.2초',prompt:'현대 통유리 건물 외벽을 아래에서 올려다본 초저각. 한여름 백색 태양이 유리면에 꽂혀 강한 반사광과 열기가 일렁인다. 카메라가 유리면을 따라 빠르게 위로 이동한다. 실사풍 시네마틱 다큐멘터리, 차가운 청회색, 광각 렌즈. 한글이나 한국어 문자는 넣지 않는다.'},
+ {id:'C2',role:'문제',use:'6.1초',prompt:'통유리 사무실 내부. 회색 블라인드가 내려와 실내가 어두워지고 천장 조명이 차례로 켜진다. 카메라는 창가에서 실내 안쪽으로 천천히 물러난다. 차갑고 채도 낮은 청회색, 35mm 렌즈. 한글이나 한국어 문자는 넣지 않는다.'},
+ {id:'C3',role:'전환',use:'3.8초',prompt:'황금빛 햇살의 한옥 마당. 카메라가 흙바닥 높이에서 대청을 향해 빠르게 이동해 깊은 처마 그늘을 통과하고 방 안까지 이어지는 빛의 길이를 드러낸다. 따뜻한 금빛과 나무 갈색, 광각 렌즈. 한글이나 한국어 문자는 넣지 않는다.'},
+ {id:'C4',role:'핵심 A',use:'6.8초',prompt:'한옥 한 칸의 건축 단면도. 높은 여름 햇빛이 가파르게 내려오다 처마 끝에서 잘리고 방 안은 그늘로 남는다. 카메라가 빛과 그늘의 경계를 따라 방 안으로 움직인다. 따뜻한 건축 시각화. 한글이나 한국어 문자는 넣지 않는다.'},
+ {id:'C5',role:'핵심 B',use:'6.2초',prompt:'앞 컷과 같은 한옥 단면과 같은 카메라 위치. 낮은 겨울 햇빛이 처마 아래를 지나 방 깊숙이 들어오고 바닥 끝에 빛이 맺힌다. 카메라가 그 빛을 따라 이동한다. 따뜻한 건축 시각화. 한글이나 한국어 문자는 넣지 않는다.'},
+ {id:'C6',role:'엔딩',use:'4.8초',prompt:'아침 금빛 햇살을 받은 한옥 정면. 카메라가 마당에서 처마 아래 마루를 향해 천천히 들어가고, 어둠 너머 방 안의 빛이 보인다. 따뜻한 금빛, 깊은 그림자, 35mm 렌즈. 한글이나 한국어 문자는 넣지 않는다.'}
+];
+const key='day7-flow-board-complete';
+let done=new Set(JSON.parse(localStorage.getItem(key)||'[]'));
+const cards=document.querySelector('#cards');
+function render(){
+ cards.innerHTML=cuts.map(c=>`<article class="card ${done.has(c.id)?'done':''}"><div class="top"><div class="cut"><span class="num">${c.id}</span><span class="role">${c.role}</span></div><label class="check"><input type="checkbox" data-check="${c.id}" ${done.has(c.id)?'checked':''}>완료</label></div><div class="times"><span class="pill">Flow 현재 결과 약 8초</span><span class="pill use">사용 ${c.use}</span></div><p class="prompt" id="prompt-${c.id}">${c.prompt}</p><div class="actions"><button class="copy" type="button" data-copy="${c.id}">견본 프롬프트 복사 연습</button></div></article>`).join('');
+ document.querySelector('#count').textContent=`${done.size} / 6`;
+ document.querySelector('#bar').style.width=`${done.size/6*100}%`;
+ document.querySelectorAll('[data-check]').forEach(el=>el.onchange=()=>{el.checked?done.add(el.dataset.check):done.delete(el.dataset.check);localStorage.setItem(key,JSON.stringify([...done]));render()});
+ document.querySelectorAll('[data-copy]').forEach(btn=>{btn.textContent='견본 프롬프트 복사 연습';btn.onclick=async()=>{const value=document.querySelector(`#prompt-${btn.dataset.copy}`).innerText;let copied=false;try{await navigator.clipboard.writeText(value);copied=true}catch{const area=document.createElement('textarea');area.value=value;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();copied=document.execCommand('copy');area.remove()}if(copied){btn.textContent='견본 복사 완료';btn.classList.add('copied');show('견본 프롬프트를 복사했습니다')}else{show('복사 권한이 없습니다. 프롬프트를 직접 선택해 주세요.')}}});
+}
+function show(msg){const t=document.querySelector('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1400)}
+document.querySelector('#reset').onclick=()=>{done.clear();localStorage.removeItem(key);render();show('완료 표시를 초기화했습니다')};
+render();
+</script>
+</body>
+</html>
