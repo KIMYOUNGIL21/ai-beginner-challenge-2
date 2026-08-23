@@ -3,13 +3,13 @@ const lessons = [
   { id: "day0", day: "준비", title: "설치부터 첫 폴더까지", file: "Day00_시작전준비.md" },
   { id: "terms", day: "준비", title: "왕초보 용어사전", file: "Day00_왕초보용어사전.md" },
   { id: "rules", day: "공통", title: "매일 인증하는 방법", file: "00_오픈카톡_인증규칙.md" },
-  { id: "day1", day: "1일", title: "크리에이터 앱 3종", file: "Day01_Artifact진단기_실행서.md" },
-  { id: "day2", day: "2일", title: "내 콘텐츠 작업방", file: "Day02_Projects_실행서_v2.md" },
-  { id: "day3", day: "3일", title: "인스타 카드뉴스", file: "Day03_Design_실행서_v2.md" },
-  { id: "day4", day: "4일", title: "Cowork 안내문", file: "Day04_Cowork_실행서_v2.md" },
-  { id: "day5", day: "5일", title: "Code 웹 도구", file: "Day05_Code_실행서_v2.md" },
-  { id: "day6", day: "6일", title: "스킬 + 커넥터", file: "Day06_Skills_Connectors_실행서_v2.md" },
-  { id: "day7", day: "7일", title: "내 첫 AI 쇼츠", file: "Day07_AI쇼츠.md" },
+  { id: "day1", day: "1일", title: "콘텐츠 스튜디오 3종", file: "Day01_Artifact진단기_실행서.md" },
+  { id: "day2", day: "2일", title: "LIFE BRAND 운영본부", file: "Day02_Projects_실행서_v2.md" },
+  { id: "day3", day: "3일", title: "브랜드 론칭 디자인", file: "Day03_Design_실행서_v2.md" },
+  { id: "day4", day: "4일", title: "가족 여행 브리핑북", file: "Day04_Cowork_실행서_v2.md" },
+  { id: "day5", day: "5일", title: "오늘의 작전실", file: "Day05_Code_실행서_v2.md" },
+  { id: "day6", day: "6일", title: "20~23초 숏츠 주문서", file: "Day06_Skills_Connectors_실행서_v2.md" },
+  { id: "day7", day: "7일", title: "20~23초 AI 쇼츠", file: "Day07_AI쇼츠.md" },
   { id: "references", day: "참고", title: "공식 레퍼런스", file: "01_레퍼런스_목록.md" }
 ];
 
@@ -19,7 +19,17 @@ const loading = document.querySelector("#loading");
 const pager = document.querySelector("#pager");
 const sidebar = document.querySelector("#sidebar");
 const overlay = document.querySelector("#overlay");
-const completed = new Set(JSON.parse(localStorage.getItem("challenge-completed") || "[]"));
+
+function readCompleted() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("challenge-completed") || "[]");
+    return new Set(Array.isArray(saved) ? saved : []);
+  } catch {
+    return new Set();
+  }
+}
+
+const completed = readCompleted();
 
 function renderNav(activeId) {
   nav.innerHTML = lessons.map(lesson => `
@@ -62,6 +72,20 @@ function enhanceArticle() {
   });
 }
 
+// CommonMark는 닫는 ** 뒤에 한글 조사가 바로 붙으면 강조로 해석하지
+// 않을 수 있다. 코드 블록은 그대로 두고, 본문에서만 강조 표시를 HTML로 바꾼다.
+function normalizeKoreanStrong(markdown) {
+  let inFence = false;
+  return markdown.split("\n").map(line => {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      return line;
+    }
+    if (inFence) return line;
+    return line.replace(/(^|[\s([{|>:\-–—])\*\*([^*\n]+)\*\*(?=[가-힣])/g, "$1<strong>$2</strong>");
+  }).join("\n");
+}
+
 async function loadLesson() {
   const id = location.hash.replace("#", "") || "welcome";
   const index = Math.max(0, lessons.findIndex(item => item.id === id));
@@ -75,7 +99,7 @@ async function loadLesson() {
     if (!response.ok) throw new Error("교재 파일을 찾을 수 없습니다.");
     const markdown = await response.text();
     const parser = window.marked?.parse
-      ? value => window.marked.parse(value, { gfm: true, breaks: false })
+      ? value => window.marked.parse(normalizeKoreanStrong(value), { gfm: true, breaks: false })
       : window.markdownFallback;
     if (!parser) throw new Error("교재 변환기를 불러오지 못했습니다.");
     content.innerHTML = parser(markdown);
@@ -90,7 +114,11 @@ async function loadLesson() {
     completeButton.setAttribute("aria-pressed", String(completed.has(lesson.id)));
     completeButton.onclick = () => {
       completed.add(lesson.id);
-      localStorage.setItem("challenge-completed", JSON.stringify([...completed]));
+      try {
+        localStorage.setItem("challenge-completed", JSON.stringify([...completed]));
+      } catch {
+        // 저장을 막은 브라우저에서도 현재 화면의 진도 표시는 유지한다.
+      }
       renderNav(lesson.id);
       completeButton.textContent = "✓ 확인 완료";
       completeButton.setAttribute("aria-pressed", "true");

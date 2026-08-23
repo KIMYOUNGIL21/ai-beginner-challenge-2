@@ -1,40 +1,63 @@
 # ai-shorts 교재 배포 기준
 
-- 원본 위치: `/Users/kim/orca/projects/ai/.claude/skills/ai-shorts`
-- 마지막 동기화·교육용 보안 수정: 2026-08-23 KST
-- 구조 기준: 최신 6컷 / 실측 TTS 31.95초 예시
-- 교재 기본 실습: API 없는 3장면 14초 조립 데모
+- 운영 원본: 운영자의 `ai-shorts` Skill 저장소
+- 채택 커밋: `f23d0a4` — 2026-08-23 14:39:46 KST
+- 구조 기준: 5문장 · 5컷 · 전부 6초 생성 · 완성 약 20~23초
+- 교재 작은 성공: 외부 호출 없는 3장면 14초 조립 데모
 
-## 운영 원본과의 관계
+## 이번 동기화에서 들어온 기능
 
-스크립트와 6컷 공식은 운영 원본 기준이다. 교육용 `SKILL.md`는 실제 API 키를
-Claude 채팅으로 받지 않고 로컬 보안 등록 파일만 사용하도록 의도적으로 수정했다.
-따라서 전체 폴더 diff는 `SKILL.md` 차이를 보여 주는 것이 정상이다.
+- `voices.py`: 같은 첫 문장을 읽는 음성 후보 5개 미리듣기
+- `plan.py`: Typecast 실제 낭독 시간에서 컷 길이 자동 계산
+- `ingest.py`: 다운로드 순서가 모호하면 확인 시트를 열고 추측 금지
+- `check.py`: 가로 영상·짧은 영상·빠진 컷과 미리보기 시트 확인
+- Flow 크레딧 부족 시 받은 클립만으로 시간을 다시 맞추는 복구 흐름
+- 긴 Flow 프롬프트를 컷별로 클립보드에 복사하는 평문 요청
+
+## 운영 원본과 다른 교육용 조정
+
+핵심 생성·측정·배치·검사·조립 스크립트는 원본과 같습니다. 교육 패키지에서는
+다음 네 파일만 조정했습니다.
+
+- `SKILL.md`: Day 6 `shorts-brief-v1` 이어받기, Mac/Windows 승인 설치, 키와 voice ID 분리
+- `references/prompt-formula.md`: 고정 가격 단정을 없애고 현재 Flow 화면 우선
+- `scripts/setup.sh`: 설치·zshrc 안내를 없앤 읽기 전용 상태 검사
+- `scripts/make-short.sh`: 안전 실행기로 만든 음성만 재사용하고 키 export 금지
+
+키를 채팅이나 명령어에 직접 넣지 않고 시작 패키지의 마스킹 입력과 안전 실행기를
+사용합니다. 안전 실행기로 이미 만든 `narration.wav`·`words.json`은
+`make-short.sh`가 키 없이 재사용할 수 있습니다.
 
 ```bash
 diff -qr --exclude=.venv --exclude=__pycache__ \
-  /Users/kim/orca/projects/ai/.claude/skills/ai-shorts \
+  "<운영 원본 경로>/ai-shorts" \
   day07-assets/ai-shorts
 ```
 
-## SHA-256
+정상 결과는 위 네 파일만 다르다고 나옵니다.
+
+## 핵심 SHA-256
 
 ```text
-36cf8b08cd1de8d81f9ff5fd3adb23f0718e5164a032cf312a3e072c4d15e096  SKILL.md
-3eebbf6eddbf719f2fc3c9186a72e211da16d14d34d2675dd4c47b88682671ae  references/prompt-formula.md
-dc4a7c6ca7e97c3368d14fd6d5edb3561c9ee3f404e87c9b903a2092caf1bc90  scripts/build.py
-f10277ef78b86a7a95c1c5dbc053425b8213f6026eaaff780c1b53227e9e37be  scripts/check.py
-2fb68d8c3e85cbeea6c6ad61a2584408f3d3b9032255f9887d89e02c9d4c91b1  scripts/ingest.py
-ca0641e44421785b5c1abbebc83ee9caf624d408985538aec008b477b2f5c032  scripts/make-short.sh
-40cc40bedc3196b10671aeed4e91c32ac8427d600ca2b16cb049f294a2008d17  scripts/setup.sh
-145d3b7c4a036b56d785b0008787594435cd381cad9e2624e8496818504c0065  scripts/subs.py
+a1d75410b45fa58133f7d85b6d5d8faec599aadc4b56d0a3a79957ffaaaff819  SKILL.md
+56994e450dd2cf3aac54bceb6b44ae77dc9992a82ad0bf90e29fd58397d18b6a  references/prompt-formula.md
+1ec5a7dd8c99a11fad39a8e6ca2840d90c307787b165178a5b53b70bb275b3c0  scripts/build.py
+664adec44eb987bee943f1e557a742cecbe8b6c841df1119100381b58cc4d6b2  scripts/check.py
+67744b66f1d27c2be53dde6387d9e1b1fa8673dafee865ae5b8c2a9c176f136e  scripts/ingest.py
+69157cfc0d04af3616806094fdaf18c5b76b19d42b804be18572968ac12625d3  scripts/plan.py
+67a96dcacae505d57d71a0a53d9b279cabe0f1bab2f0ee681c380e1efe3e6a20  scripts/setup.sh
+81eff7efc7bc80ef96dd6e630afe1e70cd7700e1ca7cf6d02fab5a9c0b43781e  scripts/subs.py
 31fe8d9fc4581601c3eae1b4d031b18e47e940d96f0359b21edf2f8a7dc52765  scripts/tts.py
-018f5201f78b9de530241abc08cd138def3e0cdeb3484f116ab3b28bbfaf4105  install_mac.sh
-18c58945dc956fc0f8bc800a7934071e33c552bebcfcb444adae0291eae5a355  install_windows.ps1
-d31c9d2bd8591627101f203f39c4698ba4e5d323aa2b676730448a17919f2cdb  register_typecast_key_mac.sh
-059f5d2c614f8d23fdcce8af4c37b3301e4f3a6a1204795c1450cefd0767833a  register_typecast_key_windows.ps1
-7bbbe7ddf6ad68b077d92bdecca0b73f9bd8623ae75ea5ecf8c5756197ccb946  run_tts_secure_mac.sh
-a947797754d4ed281ba05eb1cd1dede5f0da5d7ec382bf42d43f228c6d2a5e66  run_tts_secure_windows.ps1
+2e0d00ef25825859198bc8446ffee47081644a27c0661b60799466f9ce160cfd  scripts/voices.py
+0c37b935cbb51b590df5632795ea68abdfd7ad54fb7b05afb4dae6251f8399fe  scripts/make-short.sh
 ```
 
-운영 원본이 바뀌면 먼저 전체 실습을 재검증한 뒤 이 파일과 ZIP을 함께 갱신한다.
+## 검증 기록
+
+- Python 스크립트 전체 문법 검사 통과
+- Mac 셸 스크립트 전체 문법 검사 통과
+- 제공 데모: `3/3 준비됨`
+- 제공 데모 최종 MP4: 14.00초 · 1080×1920 · 영상+음성 · 자막 8개
+- Day 6 전달: `shorts-brief-v1` · C1~C5 · 계획 21초 → `script.txt` 5줄 생성
+- 목소리 전달: 비밀키 출력 없이 선택한 `voice_id`가 안전 실행기 `--voice` 인자로 전달됨
+- 민감한 키 문자열 미포함

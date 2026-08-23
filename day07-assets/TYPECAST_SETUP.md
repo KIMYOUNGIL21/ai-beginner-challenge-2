@@ -28,8 +28,20 @@ Mac은 실행 중 `Typecast API 키 입력`이 나오면 키를 붙이고 Enter�
 - Mac: `~/.config/ai-shorts/secrets.env`, 권한 600
 - Windows: `%USERPROFILE%\.config\ai-shorts\secrets.env`
 
-Skill은 Typecast를 호출할 때 `run_tts_secure_mac.sh` 또는
-`run_tts_secure_windows.ps1`로 이 파일을 현재 프로세스에만 불러옵니다. 값을
-대화나 로그에 다시 출력하지 않습니다.
+목소리 후보를 들을 때는 `run_voices_secure_mac.sh` 또는
+`run_voices_secure_windows.ps1`, 전체 음성을 만들 때는
+`run_tts_secure_mac.sh` 또는 `run_tts_secure_windows.ps1`이 이 파일을 현재
+프로세스에만 불러옵니다. 값을 대화나 로그에 다시 출력하지 않습니다.
+
+## 3. 목소리 선택은 키 파일과 분리
+
+후보를 들은 뒤 고른 번호의 `voice_id`는 프로젝트의 `my-short/voice.txt`에 저장합니다. `voice_id`는 비밀키가 아닙니다. Claude는 `secrets.env`를 열거나 수정하지 않고, 안전 실행기에 아래처럼 선택 ID만 인자로 넘깁니다.
+
+```text
+Mac:     run_tts_secure_mac.sh my-short/script.txt my-short/work [voice_id]
+Windows: run_tts_secure_windows.ps1 -ScriptFile my-short/script.txt -WorkDir my-short/work -VoiceId [voice_id]
+```
+
+이 방식이면 목소리를 바꿔도 API 키 파일을 읽거나 다시 저장할 필요가 없습니다.
 
 노출되었다면 Typecast에서 해당 키를 폐기하고 새로 발급합니다.

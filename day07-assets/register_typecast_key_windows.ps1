@@ -7,7 +7,7 @@ $ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
 try {
   $plain = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
   if ([string]::IsNullOrWhiteSpace($plain)) { throw "입력된 키가 없습니다." }
-  @("TYPECAST_API_KEY=$plain", "TYPECAST_VOICE=tc_69fc0cff784968297fb45daa") | Set-Content -Encoding UTF8 $configFile
+  "TYPECAST_API_KEY=$plain" | Set-Content -Encoding ascii $configFile
 } finally {
   if ($ptr -ne [IntPtr]::Zero) { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr) }
   $plain = $null

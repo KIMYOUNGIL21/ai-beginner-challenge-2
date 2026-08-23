@@ -89,9 +89,13 @@ def main():
 
     vlen, alen = probe(silent), probe(narration)
     print(f"video {vlen:.2f}s / narration {alen:.2f}s", file=sys.stderr)
-    if abs(vlen - alen) > 1.0:
-        print(f"warning: {abs(vlen-alen):.2f}s drift -- adjust scene 'use' values "
-              f"so the cuts land with the voice", file=sys.stderr)
+    # Under a second of drift used to pass silently, and the overlay then
+    # froze the last frame to cover it. plan.py makes the numbers exact, so
+    # any real gap here means scenes.json was edited by hand and is wrong.
+    if abs(vlen - alen) > 0.15:
+        sys.exit(f"영상 {vlen:.2f}s / 내레이션 {alen:.2f}s — {abs(vlen-alen):.2f}s 어긋납니다.\n"
+                 f"  plan.py 로 scenes.json 을 다시 만드세요:\n"
+                 f"    python3 <스킬>/scripts/plan.py {args.workdir} --out {args.scenes}")
 
     if args.no_subs or not words:
         chain, extra = ["[0:v]null[vout]"], []

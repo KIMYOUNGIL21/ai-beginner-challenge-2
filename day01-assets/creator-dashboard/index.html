@@ -15,7 +15,7 @@
 <body>
   <main class="shell">
     <header class="topbar"><div class="brand"><span class="logo">↗</span> CREATOR PULSE</div><span class="live">● SAMPLE DATA LIVE</span></header>
-    <section class="hero"><div><div class="eyebrow">Channel intelligence</div><h1>감으로 올리지 말고,<br>숫자로 다음 콘텐츠를 고르세요.</h1><p>내 채널들의 조회·클릭·시청 지속 성과를 한눈에 봅니다.</p></div><div class="filters"><button class="filter" data-scale=".68">7일</button><button class="filter active" data-scale="1">30일</button><button class="filter" data-scale="1.62">90일</button></div></section>
+    <section class="hero"><div><div class="eyebrow">Channel intelligence</div><h1>감으로 올리지 말고,<br>숫자로 다음 콘텐츠를 고르세요.</h1><p>생활 경험 콘텐츠의 조회·클릭·시청 지속 성과를 한눈에 봅니다.</p></div><div class="filters"><button class="filter" data-scale=".68">7일</button><button class="filter active" data-scale="1">30일</button><button class="filter" data-scale="1.62">90일</button></div></section>
     <section class="metrics">
       <article class="metric" style="--accent:var(--cyan)"><span class="metric-label">총 조회수</span><strong id="views">533K</strong><span class="delta">↗ 28.4% 성장</span></article>
       <article class="metric" style="--accent:var(--violet)"><span class="metric-label">평균 클릭률</span><strong id="avgCtr">8.0%</strong><span class="delta">↗ 1.6%p</span></article>
@@ -23,26 +23,27 @@
       <article class="metric" style="--accent:var(--rose)"><span class="metric-label">신규 구독자</span><strong id="subs">7,509</strong><span class="delta">↗ 34.1% 성장</span></article>
     </section>
     <section class="grid">
-      <article class="card"><h2>콘텐츠별 조회수</h2><div class="sub">막대를 보면 무엇이 반응을 얻었는지 바로 보입니다.</div><div class="chart" id="chart"></div><div class="insight"><b>✦ AI 인사이트</b><p><strong>AI 실전형 쇼츠</strong>와 <strong>감성 플레이리스트</strong>가 동시에 성장 중입니다. 다음 주에는 “AI로 플레이리스트 채널 운영하는 법”을 쇼츠로 연결해 보세요.</p></div></article>
+      <article class="card"><h2>콘텐츠별 조회수</h2><div class="sub">막대를 보면 무엇이 반응을 얻었는지 바로 보입니다.</div><div class="chart" id="chart"></div><div class="insight"><b>✦ 다음 행동</b><p><strong>구체적인 숫자가 있는 생활 쇼츠</strong>와 <strong>경력 자산 체크리스트</strong>의 반응이 좋습니다. 다음 주에는 “20분·3개·5가지”처럼 바로 따라 할 수 있는 숫자를 제목에 연결해 보세요.</p></div></article>
       <article class="card"><h2>이번 달 TOP 3</h2><div class="sub">조회수와 구독 전환을 합친 종합 순위</div><div class="rank" id="rank"></div></article>
     </section>
     <section class="card table-card"><div class="table-head"><div><h2>전체 콘텐츠 성과</h2><div class="sub">CSV를 올리면 이 표와 차트를 내 데이터로 바꾸도록 설계할 수 있습니다.</div></div><button class="upload" id="uploadBtn">CSV 바꾸기</button><input id="file" type="file" accept=".csv" hidden></div><div class="table-wrap"><table class="table"><thead><tr><th>콘텐츠</th><th>채널</th><th>형식</th><th>조회수</th><th>CTR</th><th>유지율</th><th>상태</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
   </main>
   <script>
     let data=[
-      {title:'클로드 아티팩트 3종 만들기',channel:'그밤PD',format:'롱폼',views:48200,ctr:7.8,ret:54,subscribers:614,status:'상승'},
-      {title:'AI로 카드뉴스 10분 완성',channel:'강한결',format:'쇼츠',views:91300,ctr:9.4,ret:71,subscribers:1280,status:'급상승'},
-      {title:'퇴근 후 듣는 새벽 플레이리스트',channel:'awayday',format:'플레이리스트',views:156000,ctr:6.9,ret:62,subscribers:2021,status:'상승'},
-      {title:'왕초보 Claude Desktop 설치',channel:'그밤PD',format:'롱폼',views:32700,ctr:5.8,ret:49,subscribers:402,status:'보통'},
-      {title:'비 오는 밤 감성 가요',channel:'가요방',format:'플레이리스트',views:128400,ctr:8.2,ret:66,subscribers:1750,status:'상승'},
-      {title:'AI 강사가 매일 쓰는 5가지',channel:'강한결',format:'쇼츠',views:76400,ctr:10.1,ret:74,subscribers:1442,status:'급상승'}
+      {title:'저녁 20분 주방 리셋',channel:'오늘의 틈',format:'롱폼',views:48200,ctr:7.8,ret:54,subscribers:614,status:'상승'},
+      {title:'바구니 3개로 식탁 비우기',channel:'오늘의 틈',format:'쇼츠',views:91300,ctr:9.4,ret:71,subscribers:1280,status:'급상승'},
+      {title:'정리가 오래 안 가는 진짜 이유',channel:'오늘의 틈',format:'블로그 영상',views:56600,ctr:6.9,ret:62,subscribers:721,status:'상승'},
+      {title:'완벽하지 않은 식탁 전후',channel:'오늘의 틈',format:'쇼츠',views:32700,ctr:5.8,ret:49,subscribers:402,status:'보통'},
+      {title:'직함 없이 경력 설명하기',channel:'다음 장',format:'롱폼',views:68400,ctr:8.2,ret:66,subscribers:950,status:'상승'},
+      {title:'퇴직 전 정리할 경력 자산 5가지',channel:'다음 장',format:'쇼츠',views:76400,ctr:10.1,ret:74,subscribers:1442,status:'급상승'}
     ];
     const short=n=>n>=1000?(n/1000).toFixed(n>=100000?0:1)+'K':n.toLocaleString('ko-KR');
+    const escapeHTML=value=>String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
     function render(scale=1){
       const max=Math.max(...data.map(x=>x.views));
-      chart.innerHTML=data.map(x=>`<div class="bar-wrap"><div class="bar" style="--h:${Math.max(10,x.views/max*100)}%" title="${x.views.toLocaleString()}회"></div><span>${x.channel}</span></div>`).join('');
-      tbody.innerHTML=data.map(x=>`<tr><td><b>${x.title}</b></td><td>${x.channel}</td><td>${x.format}</td><td>${Math.round(x.views*scale).toLocaleString()}</td><td>${x.ctr}%</td><td>${x.ret}%</td><td><span class="pill">${x.status}</span></td></tr>`).join('');
-      const top=[...data].sort((a,b)=>b.views-a.views).slice(0,3); rank.innerHTML=top.map((x,i)=>`<div class="rank-item"><span class="rank-num">${i+1}</span><div><div class="rank-title">${x.title}</div><div class="rank-meta">${x.channel} · ${x.format}</div></div><div class="score"><strong>${short(Math.round(x.views*scale))}</strong><span>${x.status}</span></div></div>`).join('');
+      chart.innerHTML=data.map(x=>`<div class="bar-wrap"><div class="bar" style="--h:${Math.max(10,x.views/max*100)}%" title="${x.views.toLocaleString()}회"></div><span>${escapeHTML(x.channel)}</span></div>`).join('');
+      tbody.innerHTML=data.map(x=>`<tr><td><b>${escapeHTML(x.title)}</b></td><td>${escapeHTML(x.channel)}</td><td>${escapeHTML(x.format)}</td><td>${Math.round(x.views*scale).toLocaleString()}</td><td>${x.ctr}%</td><td>${x.ret}%</td><td><span class="pill">${escapeHTML(x.status)}</span></td></tr>`).join('');
+      const top=[...data].sort((a,b)=>b.views-a.views).slice(0,3); rank.innerHTML=top.map((x,i)=>`<div class="rank-item"><span class="rank-num">${i+1}</span><div><div class="rank-title">${escapeHTML(x.title)}</div><div class="rank-meta">${escapeHTML(x.channel)} · ${escapeHTML(x.format)}</div></div><div class="score"><strong>${short(Math.round(x.views*scale))}</strong><span>${escapeHTML(x.status)}</span></div></div>`).join('');
       views.textContent=short(Math.round(data.reduce((s,x)=>s+x.views,0)*scale)); subs.textContent=Math.round(data.reduce((s,x)=>s+(x.subscribers||0),0)*scale).toLocaleString(); avgCtr.textContent=(data.reduce((s,x)=>s+x.ctr,0)/data.length).toFixed(1)+'%'; avgRet.textContent=(data.reduce((s,x)=>s+x.ret,0)/data.length).toFixed(1)+'%';
     }
     document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(+b.dataset.scale)});

@@ -1,18 +1,42 @@
-/* CDN이 막혔을 때도 기본 교재를 읽을 수 있게 하는 최소 Markdown 변환기 */
+/* CDN이 막혀도 교재의 글·표·이미지·다운로드 링크를 읽을 수 있게 하는 경량 Markdown 변환기 */
 (function () {
-  const escapeHtml = value => value
+  const escapeHtml = value => String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+
+  const safeUrl = value => /^(?:javascript|vbscript|data):/i.test(value.trim()) ? "#" : value;
 
   const inline = value => escapeHtml(value)
+    .replace(/!\[([^\]]*)\]\(([^\s)]+)(?:\s+&quot;[^&]*&quot;)?\)/g,
+      (_, alt, url) => `<img src="${safeUrl(url)}" alt="${alt}" loading="lazy">`)
+    .replace(/\[([^\]]+)\]\(([^\s)]+)(?:\s+&quot;[^&]*&quot;)?\)/g,
+      (_, label, url) => `<a href="${safeUrl(url)}">${label}</a>`)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2">$1</a>')
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>");
 
+  const splitTableRow = line => {
+    const trimmed = line.trim().replace(/^\|/, "").replace(/\|$/, "");
+    return trimmed.split("|").map(cell => cell.trim());
+  };
+
+  const isTableDivider = line => {
+    const cells = splitTableRow(line);
+    return cells.length > 1 && cells.every(cell => /^:?-{3,}:?$/.test(cell));
+  };
+
+  const listItem = value => {
+    const task = value.match(/^\[([ xX])\]\s+(.+)$/);
+    if (!task) return `<li>${inline(value)}</li>`;
+    const checked = task[1].toLowerCase() === "x" ? " checked" : "";
+    return `<li class="task-item"><input type="checkbox" disabled${checked}> ${inline(task[2])}</li>`;
+  };
+
   window.markdownFallback = function (markdown) {
-    const lines = markdown.replace(/\r/g, "").split("\n");
+    const lines = String(markdown).replace(/\r/g, "").split("\n");
     const output = [];
     let paragraph = [];
     let list = null;
@@ -24,7 +48,7 @@
       paragraph = [];
     };
     const flushList = () => {
-      if (list) output.push(`<${list.type}>${list.items.map(item => `<li>${inline(item)}</li>`).join("")}</${list.type}>`);
+      if (list) output.push(`<${list.type}>${list.items.map(listItem).join("")}</${list.type}>`);
       list = null;
     };
     const flushQuote = () => {
@@ -33,7 +57,8 @@
     };
     const flushAll = () => { flushParagraph(); flushList(); flushQuote(); };
 
-    for (const line of lines) {
+    for (let index = 0; index < lines.length; index += 1) {
+      const line = lines[index];
       if (code !== null) {
         if (/^```/.test(line)) {
           output.push(`<pre><code>${escapeHtml(code.replace(/\n$/, ""))}</code></pre>`);
@@ -43,10 +68,38 @@
       }
       if (/^```/.test(line)) { flushAll(); code = ""; continue; }
       if (!line.trim()) { flushAll(); continue; }
-      const heading = line.match(/^(#{1,3})\s+(.+)$/);
-      if (heading) { flushAll(); output.push(`<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`); continue; }
-      if (/^---+$/.test(line.trim())) { flushAll(); output.push("<hr>"); continue; }
-      const item = line.match(/^\s*(?:([-*])|(\d+)\.)\s+(.+)$/);
+
+      if (line.includes("|") && isTableDivider(lines[index + 1] || "")) {
+        flushAll();
+        const headings = splitTableRow(line);
+        const alignments = splitTableRow(lines[index + 1]).map(cell => {
+          if (cell.startsWith(":") && cell.endsWith(":")) return "center";
+          if (cell.endsWith(":")) return "right";
+          return "left";
+        });
+        const rows = [];
+        index += 2;
+        while (index < lines.length && lines[index].trim() && lines[index].includes("|")) {
+          rows.push(splitTableRow(lines[index]));
+          index += 1;
+        }
+        index -= 1;
+        const head = headings.map((cell, i) => `<th style="text-align:${alignments[i] || "left"}">${inline(cell)}</th>`).join("");
+        const body = rows.map(row => `<tr>${headings.map((_, i) => `<td style="text-align:${alignments[i] || "left"}">${inline(row[i] || "")}</td>`).join("")}</tr>`).join("");
+        output.push(`<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`);
+        continue;
+      }
+
+      const heading = line.match(/^(#{1,6})\s+(.+)$/);
+      if (heading) {
+        flushAll();
+        const level = heading[1].length;
+        output.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+        continue;
+      }
+      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { flushAll(); output.push("<hr>"); continue; }
+
+      const item = line.match(/^\s*(?:([-+*])|(\d+)\.)\s+(.+)$/);
       if (item) {
         flushParagraph(); flushQuote();
         const type = item[2] ? "ol" : "ul";

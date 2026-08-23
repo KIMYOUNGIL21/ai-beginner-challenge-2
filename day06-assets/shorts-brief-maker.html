@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>20~23초 숏츠 주문서 랩</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#ece8de;color:#171b25;font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}.app{width:min(1320px,96vw);margin:22px auto;display:grid;grid-template-columns:350px 1fr;gap:18px}.form,.board{border-radius:28px}.form{align-self:start;padding:25px;background:#fff;box-shadow:0 18px 50px #3c35251c;position:sticky;top:16px}.tag{display:inline-block;padding:7px 10px;border-radius:999px;background:#ffe24a;font-size:12px;font-weight:950}.form h1{font-size:32px;line-height:1.05;margin:14px 0}.help{color:#626a79;line-height:1.55}.preset{width:100%;padding:10px;margin-top:2px;border:1.5px solid #2251ff;border-radius:11px;background:#eef2ff;color:#1e40af;font:inherit;font-weight:900;cursor:pointer}.field{margin-top:13px}.field label{display:block;font-size:13px;font-weight:900;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:11px;border:1.5px solid #d5d8df;border-radius:11px;font:inherit}.field textarea{height:76px;resize:vertical}.build,.download{width:100%;padding:13px;margin-top:11px;border:0;border-radius:12px;font:inherit;font-weight:950;cursor:pointer}.build{background:#2251ff;color:white}.downloads{display:grid;grid-template-columns:1fr 1fr;gap:8px}.download{background:#171b25;color:#fff;font-size:13px}.download.json{background:#ff4f2e}.error{min-height:20px;margin-top:8px;color:#c23a21;font-size:13px}.board{overflow:hidden;background:#101522;color:#fff;box-shadow:0 24px 70px #10152244}.hero{padding:34px;background:linear-gradient(120deg,#2251ff 0 59%,#ff4f2e 59%);position:relative}.hero:after{content:"05";position:absolute;right:28px;bottom:-30px;font-size:145px;line-height:1;color:#ffffff18;font-weight:1000}.kicker{font-size:12px;font-weight:900;letter-spacing:.18em;color:#ffe24a}.hero h2{position:relative;z-index:1;max-width:720px;font-size:clamp(35px,5.6vw,70px);line-height:1.02;margin:14px 0}.hero p{position:relative;z-index:1;margin:0;color:#e4e9ff;font-size:17px}.inside{padding:25px}.section-title{display:flex;align-items:center;gap:10px;margin:6px 0 13px;font-size:15px;font-weight:900}.section-title span{width:24px;height:4px;background:#ffe24a}.hooks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.hook{padding:15px;border-radius:15px;background:#1d2434;border:1px solid #ffffff18}.hook.selected{outline:2px solid #ffe24a}.hook b{color:#ffe24a;font-size:12px}.hook p{line-height:1.45}.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.cut{min-height:250px;padding:15px;border-radius:16px;background:#f5f1e8;color:#181c27}.cut:nth-child(even){background:#dce4ff}.cut .top{display:flex;justify-content:space-between;gap:6px;font-size:11px;font-weight:950}.cut .id{color:#2251ff}.cut h3{font-size:22px;margin:12px 0}.cut .narration{font-weight:800;line-height:1.45}.cut .visual{margin-top:14px;padding-top:12px;border-top:1px solid #171b2522;color:#525a68;font-size:13px;line-height:1.45}.footer{display:grid;grid-template-columns:1.25fr 1fr;gap:10px;margin-top:14px}.note{padding:17px;border-radius:16px;background:#ffffff0b;color:#dce4ff}.note b{color:#78f1c4}.note p{line-height:1.55}.schema{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px}.schema strong{color:#ffe24a}@media(max-width:1000px){.app{grid-template-columns:1fr}.form{position:static}.timeline{grid-template-columns:repeat(2,1fr)}.cut:last-child{grid-column:1/-1}}@media(max-width:690px){.app{width:100%;margin:0;gap:0}.form,.board{border-radius:0}.hooks,.timeline,.footer{grid-template-columns:1fr}.cut:last-child{grid-column:auto}.hero,.inside{padding:21px}.downloads{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="form">
+      <span class="tag">DAY 6 · SKILL PREVIEW</span>
+      <h1>20~23초 숏츠<br>주문서 랩</h1>
+      <p class="help">눈으로 비교할 주제 하나를 Day 7이 읽을 C1~C5 기획으로 바꿉니다.</p>
+      <button class="preset" id="ice-preset" type="button">작은 연습 · 얼음 예시 한 번에 넣기</button>
+      <div class="field"><label for="title">주제</label><input id="title" value="한옥 처마가 여름빛은 막고 겨울빛은 들이는 이유"></div>
+      <div class="field"><label for="audience">누가 볼까요?</label><input id="audience" value="생활 속 설계 원리가 궁금한 사람"></div>
+      <div class="field"><label for="contrast">눈으로 보여 줄 대비</label><textarea id="contrast">같은 처마에서 여름의 높은 햇빛은 막히고 겨울의 낮은 햇빛은 안으로 들어온다</textarea></div>
+      <div class="field"><label for="message">마지막 한마디</label><textarea id="message">긴 처마는 햇빛을 전부 막는 지붕이 아니라 계절에 따라 빛을 고르는 장치다</textarea></div>
+      <div class="field"><label for="tone">말투</label><select id="tone"><option>짧고 또렷한 다큐멘터리 톤</option><option>다정하고 현실적으로</option><option>짧고 단단하게</option></select></div>
+      <button class="build" id="build">5컷 주문서 만들기 →</button>
+      <div class="downloads"><button class="download json" id="download-json">Day 7용 JSON 받기</button><button class="download" id="download-html">완성 HTML 받기</button></div>
+      <div class="error" id="error" role="status"></div>
+    </section>
+    <section class="board" id="board">
+      <header class="hero"><div class="kicker">20–23 SECOND · FIVE CUT BLUEPRINT</div><h2 id="v-title"></h2><p id="v-audience"></p></header>
+      <div class="inside">
+        <div class="section-title"><span></span>첫 2초를 잡는 훅 3안</div><div class="hooks" id="hooks"></div>
+        <div class="section-title" style="margin-top:22px"><span></span>C1~C5 제작 주문서</div><div class="timeline" id="timeline"></div>
+        <div class="footer"><div class="note"><b>눈으로 보여 줄 대비</b><p id="v-contrast"></p></div><div class="note"><b>마지막 한마디</b><p id="v-message"></p></div></div>
+        <div class="note schema" style="margin-top:10px"><strong>DAY 7 HANDOFF</strong> · shorts-brief-v1 · C1~C5 · 계획 합계 21초<br>실제 낭독 시간은 Day 7에서 목소리를 만든 뒤 다시 측정합니다.</div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const ids=['title','audience','contrast','message','tone'];
+    const $=selector=>document.querySelector(selector);
+    const values=()=>Object.fromEntries(ids.map(id=>[id,$('#'+id).value.trim()]));
+    const safe=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+
+    function makeBrief(){
+      const v=values();
+      const hooks=[
+        `${v.title}, 우리가 알던 설명이 전부는 아닙니다.`,
+        `같은 장면이 조건 하나로 정반대로 바뀝니다.`,
+        `${v.title}, 5컷으로 바로 확인해 보세요.`
+      ];
+      const scenes=[
+        {id:'C1',role:'훅',narration:hooks[1],visual:`${v.title}의 결과가 갈리는 분할 화면`,planned_seconds:4},
+        {id:'C2',role:'반전',narration:`익숙한 설명보다 중요한 건 ${v.contrast}.`,visual:'우리가 알던 설명을 뒤집는 한 장면',planned_seconds:5},
+        {id:'C3',role:'원리 A',narration:'첫 번째 조건에서는 변화가 이렇게 나타납니다.',visual:'같은 구도에서 첫 번째 조건만 보여 주기',planned_seconds:4},
+        {id:'C4',role:'원리 B',narration:'두 번째 조건에서는 같은 원리가 반대로 보입니다.',visual:'C3와 같은 구도에서 조건 하나만 바꾸기',planned_seconds:4},
+        {id:'C5',role:'엔딩',narration:v.message.replace(/[.!?。！？]+$/,'')+'.',visual:'두 조건을 한 화면에 겹쳐 결론 보여 주기',planned_seconds:4}
+      ];
+      return {schema_version:'shorts-brief-v1',title:v.title,audience:v.audience,contrast:v.contrast,message:v.message,tone:v.tone,selected_hook:hooks[1],target_seconds:'20-23',hooks,scenes};
+    }
+
+    function render(){
+      const v=values();
+      const empty=ids.find(id=>!v[id]);
+      if(empty){$('#error').textContent='빈칸을 모두 채워 주세요.';$('#'+empty).focus();return false}
+      $('#error').textContent='';
+      const brief=makeBrief();
+      $('#v-title').textContent=brief.title;
+      $('#v-audience').textContent=`FOR · ${brief.audience} · ${brief.tone}`;
+      $('#v-contrast').textContent=brief.contrast;
+      $('#v-message').textContent=brief.message;
+      $('#hooks').innerHTML=brief.hooks.map((hook,index)=>`<article class="hook ${index===1?'selected':''}"><b>HOOK 0${index+1}${index===1?' · 선택':''}</b><p>${safe(hook)}</p></article>`).join('');
+      $('#timeline').innerHTML=brief.scenes.map(scene=>`<article class="cut"><div class="top"><span class="id">${safe(scene.id)}</span><span>${safe(scene.planned_seconds)}초 계획</span></div><h3>${safe(scene.role)}</h3><p class="narration">${safe(scene.narration)}</p><p class="visual"><b>화면</b><br>${safe(scene.visual)}</p></article>`).join('');
+      return brief;
+    }
+
+    function save(text,filename,type){
+      const href=URL.createObjectURL(new Blob([text],{type}));
+      const link=document.createElement('a');link.href=href;link.download=filename;link.click();
+      setTimeout(()=>URL.revokeObjectURL(href),1000);
+    }
+
+    $('#build').onclick=render;
+    $('#ice-preset').onclick=()=>{
+      $('#title').value='얼음은 왜 물에 뜰까';
+      $('#audience').value='생활 과학이 궁금한 사람';
+      $('#contrast').value='액체 물에서는 분자가 촘촘하지만 얼음이 되면 육각 구조 사이에 빈틈이 생긴다';
+      $('#message').value='물은 얼면서 부피가 늘고 밀도가 낮아져 자기 물 위에 뜬다';
+      $('#tone').value='짧고 또렷한 다큐멘터리 톤';
+      render();
+    };
+    $('#download-json').onclick=()=>{const brief=render();if(!brief)return;const {hooks,...json}=brief;save(JSON.stringify(json,null,2),'brief.json','application/json');$('#error').textContent='brief.json 다운로드를 시작했습니다.'};
+    $('#download-html').onclick=()=>{const brief=render();if(!brief)return;const css=document.querySelector('style').textContent,board=$('#board').outerHTML;save(`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${safe(brief.title)} · 숏츠 주문서</title><style>${css}body{padding:20px}.board{max-width:1050px;margin:auto}</style>${board}</html>`,'shorts-brief.html','text/html');$('#error').textContent='shorts-brief.html 다운로드를 시작했습니다.'};
+    render();
+  </script>
+</body>
+</html>

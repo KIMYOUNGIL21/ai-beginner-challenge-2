@@ -177,4 +177,6 @@ def build_png(cues, workdir, w, h, size, margin_v, fps=30):
                     "-c:v", "qtrle", "-pix_fmt", "argb", track], check=True)
 
     # input 0 = video, input 1 = narration, input 2 = this overlay track
-    return ["[0:v][2:v]overlay=0:0:shortest=0[vout]"], ["-i", track]
+    # Without eof_action=pass the overlay outlives the video and framesync
+    # repeats the final frame to match, freezing the ending.
+    return ["[0:v][2:v]overlay=0:0:eof_action=pass[vout]"], ["-i", track]

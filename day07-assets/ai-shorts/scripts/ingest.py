@@ -48,6 +48,11 @@ def candidates(src_dir, since, consumed):
 
     Without the consumed set, a partial run would re-offer files it already
     used and silently shift every later scene by one.
+
+    Returns (paths, ambiguous). Ambiguous is True when the timestamps do not
+    separate the files: a Shift-select batch download writes them all in the
+    same instant, so arrival order is gone and sorted() falls back to the
+    filename, which for Flow is a hash. Guessing there scrambles every cut.
     """
     out = []
     for name in os.listdir(src_dir):
@@ -58,7 +63,49 @@ def candidates(src_dir, since, consumed):
             st = os.stat(p)
             if st.st_mtime >= since:
                 out.append((st.st_mtime, p))
-    return [p for _, p in sorted(out)]
+    out.sort()
+    times = [t for t, _ in out]
+    ambiguous = len(times) > 1 and (max(times) - min(times)) < 2.0
+    return [p for _, p in out], ambiguous
+
+
+def order_sheet(paths, out):
+    """Numbered thumbnail strip of the candidate files, in the offered order.
+
+    When timestamps cannot tell us the order, the user has to. Asking them
+    about hash filenames is unanswerable; asking them about pictures is a
+    five-second look.
+    """
+    tiles = []
+    for i, src in enumerate(paths, 1):
+        t = f"/tmp/.ord{i:02d}.png"
+        r = subprocess.run(
+            ["ffmpeg", "-y", "-v", "error", "-i", src, "-frames:v", "1",
+             "-vf", ("scale=240:360:force_original_aspect_ratio=decrease,"
+                     "pad=240:360:(ow-iw)/2:(oh-ih)/2:color=0x15181A,"
+                     f"drawbox=x=0:y=0:w=54:h=54:color=0x15181A@0.85:t=fill"),
+             t], capture_output=True)
+        if r.returncode == 0:
+            tiles.append(t)
+    if not tiles:
+        return None
+    args = []
+    for t in tiles:
+        args += ["-i", t]
+    try:
+        subprocess.run(["ffmpeg", "-y", "-v", "error", *args,
+                        "-filter_complex", f"hstack=inputs={len(tiles)}"
+                        if len(tiles) > 1 else "null", out],
+                       check=True, capture_output=True)
+    except subprocess.CalledProcessError:
+        return None
+    finally:
+        for t in tiles:
+            try:
+                os.remove(t)
+            except OSError:
+                pass
+    return out
 
 
 def main():
@@ -93,7 +140,7 @@ def main():
         if not os.path.isdir(args.src):
             sys.exit(f"no such directory: {args.src}")
         since = time.time() - args.since_hours * 3600
-        found = candidates(args.src, since, set(load_state(args.scenes)))
+        found, ambiguous = candidates(args.src, since, set(load_state(args.scenes)))
         # Only fill scenes that have no clip yet, in download order.
         todo = [i for i, sc in enumerate(scenes, 1) if not os.path.exists(sc["file"])]
         if not todo:
@@ -107,6 +154,15 @@ def main():
                   f"앞에서부터 {min(len(found), len(todo))}개만 배치합니다.\n",
                   file=sys.stderr)
         plan = list(zip(todo, found))
+
+        if ambiguous and not args.apply:
+            sheet = order_sheet(found, os.path.join(
+                os.path.dirname(os.path.abspath(args.scenes)), "받은순서-확인.png"))
+            print("⚠ 파일들이 같은 시각에 저장돼 있어 순서를 알 수 없습니다.")
+            print("  한꺼번에 다운로드하면 이렇게 됩니다 — 아래 순서는 추측입니다.\n")
+            if sheet:
+                print(f"  미리보기: {sheet}")
+                print("  왼쪽부터 1번입니다. 실제 컷 순서와 다르면 --map 으로 지정하세요.\n")
 
     print(f"{'씬':<5}{'길이':>7}{'필요':>7}  ←  파일")
     print("-" * 66)

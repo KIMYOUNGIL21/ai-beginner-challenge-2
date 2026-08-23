@@ -12,7 +12,7 @@ if [ -z "$typecast_key" ]; then
   exit 1
 fi
 umask 077
-printf 'TYPECAST_API_KEY=%q\nTYPECAST_VOICE=%q\n' "$typecast_key" 'tc_69fc0cff784968297fb45daa' > "$config_file"
+printf 'TYPECAST_API_KEY=%q\n' "$typecast_key" > "$config_file"
 chmod 600 "$config_file"
 unset typecast_key
 echo 'Typecast 연결 정보를 사용자 전용 설정에 저장했습니다. 키 값은 출력하지 않습니다.'
