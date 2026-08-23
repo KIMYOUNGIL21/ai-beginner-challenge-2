@@ -5,15 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AI 왕초보 챌린지 2기 — Claude Code Desktop으로 매일 결과물을 만드는 7일 교재">
   <title>AI 왕초보 챌린지 2기</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23132a36'/%3E%3Cpath d='M18 42V22h12c9 0 16 3 16 10S39 42 30 42H18zm9-7h4c4 0 7-1 7-3s-3-3-7-3h-4v6z' fill='%23ff9b7d'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f0f0f'/%3E%3Ccircle cx='45' cy='19' r='7' fill='%23d8f26e'/%3E%3Ctext x='14' y='46' font-family='sans-serif' font-size='26' font-weight='700' fill='%23ffffff'%3EAI%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/style.css">
+  <script>
+    (function () {
+      var set = function () {
+        document.documentElement.dataset.lesson = (location.hash || "#welcome").replace("#", "");
+      };
+      set();
+      window.addEventListener("hashchange", set);
+    })();
+  </script>
 </head>
 <body>
   <header class="topbar">
     <button id="menuButton" class="menu-button" aria-label="목차 열기" aria-controls="sidebar" aria-expanded="false">☰</button>
-    <a class="brand" href="#welcome">AI 왕초보 챌린지 <strong>2기</strong></a>
+    <a class="brand" href="#welcome">AI 왕초보 챌린지 <strong>2기</strong><span class="brand-by">by 그밤PD</span></a>
     <span class="top-note">한 번에 한 단계씩</span>
   </header>
+
+  <div class="ribbon" aria-hidden="true">
+    <span>7-DAY CHALLENGE</span><span class="dot">·</span><span>하루 한 걸음</span><span class="dot">·</span><span>매일 인증</span><span class="dot">·</span><span>DAY 0 → DAY 7</span>
+  </div>
 
   <div class="layout">
     <aside id="sidebar" class="sidebar" aria-label="교재 목차">
@@ -29,6 +44,10 @@
     </aside>
 
     <main class="main">
+      <section class="hero-block">
+        <p class="hero-eyebrow">그밤PD · 7 DAYS JOURNEY</p>
+        <p class="hero-title">하루 한 걸음, 나도 만드는 사람</p>
+      </section>
       <div id="loading" class="loading">교재를 불러오고 있습니다…</div>
       <article id="content" class="content" hidden></article>
       <div class="pager" id="pager" hidden>
@@ -38,6 +57,11 @@
       </div>
     </main>
   </div>
+
+  <footer class="site-footer">
+    <p class="footer-mark">그밤PD</p>
+    <p class="footer-caption">AI 왕초보 챌린지 2기 교재 · 만든 사람 그밤PD · © 2026</p>
+  </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite">복사했습니다</div>
   <div id="overlay" class="overlay" aria-hidden="true"></div>
