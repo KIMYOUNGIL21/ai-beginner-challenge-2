@@ -15,8 +15,19 @@ PROJ="$(cd "${1:-.}" && pwd)"
 OUT="${2:-D07_쇼츠.mp4}"
 cd "$PROJ"
 
-PY=python3
-[ -x "$SKILL/.venv/bin/python" ] && PY="$SKILL/.venv/bin/python"
+# Prefer the package venv (it carries Pillow for subtitles). Windows puts it
+# under Scripts/ and installs "py"/"python" rather than "python3", and the
+# Store stubs named python/python3 only open the Microsoft Store, so every
+# candidate has to actually run.
+PY=""
+for candidate in "$SKILL/.venv/bin/python" "$SKILL/.venv/Scripts/python.exe" \
+                 "$SKILL/.venv/Scripts/python" python3 python py; do
+  if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c "import sys" >/dev/null 2>&1; then
+    PY="$candidate"
+    break
+  fi
+done
+[ -n "$PY" ] || { echo "✗ python 을 찾지 못했습니다. 시작 패키지의 설치 문서를 먼저 진행하세요." >&2; exit 1; }
 
 die() { echo; echo "✗ $*" >&2; exit 1; }
 step() { echo; echo "── $* ──"; }

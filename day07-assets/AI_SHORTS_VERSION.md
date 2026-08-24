@@ -22,7 +22,7 @@
 - `SKILL.md`: Day 6 `shorts-brief-v1` 이어받기, Mac/Windows 승인 설치, 키와 voice ID 분리
 - `references/prompt-formula.md`: 고정 가격 단정을 없애고 현재 Flow 화면 우선
 - `scripts/setup.sh`: 설치·zshrc 안내를 없앤 읽기 전용 상태 검사 (Windows의 `py`·`.venv\Scripts`도 함께 인식)
-- `scripts/make-short.sh`: 안전 실행기로 만든 음성만 재사용하고 키 export 금지
+- `scripts/make-short.sh`: 안전 실행기로 만든 음성만 재사용하고 키 export 금지 (Windows의 `py`·`.venv\Scripts`도 함께 인식)
 
 키를 채팅이나 명령어에 직접 넣지 않고 시작 패키지의 마스킹 입력과 안전 실행기를
 사용합니다. 안전 실행기로 이미 만든 `narration.wav`·`words.json`은
@@ -49,7 +49,7 @@ a1d75410b45fa58133f7d85b6d5d8faec599aadc4b56d0a3a79957ffaaaff819  SKILL.md
 81eff7efc7bc80ef96dd6e630afe1e70cd7700e1ca7cf6d02fab5a9c0b43781e  scripts/subs.py
 31fe8d9fc4581601c3eae1b4d031b18e47e940d96f0359b21edf2f8a7dc52765  scripts/tts.py
 2e0d00ef25825859198bc8446ffee47081644a27c0661b60799466f9ce160cfd  scripts/voices.py
-0c37b935cbb51b590df5632795ea68abdfd7ad54fb7b05afb4dae6251f8399fe  scripts/make-short.sh
+94fb86ec8119097869a7025a07628b0d1eee3f7af1fd77d157d83146f6808779  scripts/make-short.sh
 ```
 
 ## 검증 기록
