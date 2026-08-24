@@ -79,41 +79,10 @@
 
 ZIP을 받은 뒤 압축을 풀고 `day01-assets → input → creator-performance.csv`를 찾습니다. 데이터만 받는 링크에서 글자 표가 보이면 `Command + S` 또는 `Ctrl + S`로 저장해도 됩니다. 파일 이름은 `creator-performance.csv` 그대로 둡니다. 작품 2의 사진은 선택입니다. 사진이 없으면 Claude가 만든 색상 표지로 완주할 수 있습니다.
 
-## 두 영상에서 실제로 만든 예제
+## 왜 이 세 작품인가요?
 
-첫 번째 영상은 아티팩트를 문서·트래커·계산기·대시보드로 나눠 네 작품을 시연합니다.
-
-| 시점 | 영상 속 작품 | 작동하는 부분 |
-|---:|---|---|
-| [02:32](https://www.youtube.com/watch?v=IB5UjrVFyZ0&t=152s) | 편집 가능한 회의록 | 안건·할 일 추가, PDF·Word 다운로드 |
-| [05:09](https://www.youtube.com/watch?v=IB5UjrVFyZ0&t=309s) | 신상품 출시 체크리스트 | 담당자·마감일·완료율 표시 |
-| [07:23](https://www.youtube.com/watch?v=IB5UjrVFyZ0&t=443s) | 발주 수량 계산기 | 숫자에 따라 발주 필요·중단 판정 |
-| [10:06](https://www.youtube.com/watch?v=IB5UjrVFyZ0&t=606s) | 분기 실적 대시보드 | 기간 변경, 그래프, 이상 수치 강조 |
-
-두 번째 영상은 더 넓은 범위의 앱과 시각화를 보여 줍니다.
-
-| 시점 | 영상 속 작품 | 종류 |
-|---:|---|---|
-| [00:09](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=9s) | 할인 판매가 계산기 | 계산 앱 |
-| [03:29](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=209s) | 편집·다운로드 가능한 회의록 | 문서 앱 |
-| [05:07](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=307s) | 월 매출 대시보드와 한 장 PPT | 데이터 시각화 |
-| [06:24](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=384s) | 여러 사람이 함께 쓰는 점심 메뉴 투표기 | 공유 앱 |
-| [07:50](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=470s) | 엑셀 인터랙티브 차트 | 커스텀 비주얼 |
-| [09:16](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=556s) | 클릭 가능한 마케팅 진행 흐름 | 커스텀 비주얼 |
-| [12:53](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=773s) | 인스타 캡션 생성기 | AI 앱 |
-| [14:12](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=852s) | 유튜브 제목·썸네일 문구 생성기 | AI 앱 |
-| [15:24](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=924s) | 고객 문의 답변 도우미 | AI 앱 |
-| [17:30](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1050s) | 구글 캘린더 주간 대시보드 | 커넥터 앱 |
-| [18:49](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1129s) | Gmail 분류 보드 | 커넥터 앱 |
-| [20:19](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1219s) | Gamma 주간 업무 보고 슬라이드 | 외부 서비스 연동 |
-| [23:20](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1400s) | 함께 쓰는 방명록 | 공유 저장 앱 |
-| [24:29](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1469s) | 다시 열어도 남는 할 일 트래커 | 개인 저장 앱 |
-| [26:07](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1567s) | 엑셀 명단을 넣는 이벤트 추첨기 | 공유·파일 앱 |
-| [30:05](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1805s) | 캠페인 성과 대시보드 | Claude Code 라이브 아티팩트 |
-| [33:02](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=1982s) | 프로젝트 진행 대시보드 | Claude Code 라이브 아티팩트 |
-| [34:39](https://www.youtube.com/watch?v=iBGJ6haInyQ&t=2079s) | 일별 주문·매출 대시보드 | Claude Code 라이브 아티팩트 |
-
-Day 1에서는 이 가운데 **대시보드, 인스타 캡션 앱, 유튜브 제목·썸네일 앱**을 골랐습니다. 세 작품이 각각 데이터 시각화, 이미지·글 생성, 콘텐츠 기획이라는 서로 다른 능력을 보여 주기 때문입니다.
+아티팩트로는 회의록, 체크리스트, 계산기, 대시보드까지 다양하게 만들 수 있습니다.
+오늘 고른 세 작품은 각각 **데이터 시각화 · 글 생성 · 콘텐츠 기획**이라는 서로 다른 능력을 하나씩 담당합니다. 이 셋을 직접 만들어 보면 나머지는 응용입니다.
 
 ---
 
