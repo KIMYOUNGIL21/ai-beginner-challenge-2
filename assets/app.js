@@ -3,7 +3,7 @@ const lessons = [
   { id: "day0", day: "준비", title: "설치부터 첫 폴더까지", file: "Day00_시작전준비.md" },
   { id: "terms", day: "준비", title: "왕초보 용어사전", file: "Day00_왕초보용어사전.md" },
   { id: "rules", day: "공통", title: "매일 인증하는 방법", file: "00_오픈카톡_인증규칙.md" },
-  { id: "day1", day: "1일", title: "콘텐츠 스튜디오 2종", file: "Day01_Artifact진단기_실행서.md" },
+  { id: "day1", day: "1일", title: "콘텐츠 스튜디오 3종", file: "Day01_Artifact진단기_실행서.md" },
   { id: "day2", day: "2일", title: "LIFE BRAND 운영본부", file: "Day02_Projects_실행서_v2.md" },
   { id: "day3", day: "3일", title: "브랜드 론칭 디자인", file: "Day03_Design_실행서_v2.md" },
   { id: "day4", day: "4일", title: "가족 여행 브리핑북", file: "Day04_Cowork_실행서_v2.md" },
