@@ -17,11 +17,33 @@ check_command() {
   fi
 }
 
-check_command python3 "Python 3"
+# Windows installs "py"/"python"; macOS and Linux install "python3".
+python_bin=""
+for candidate in python3 python py; do
+  if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c "import sys" >/dev/null 2>&1; then
+    python_bin="$candidate"
+    break
+  fi
+done
+if [ -n "$python_bin" ]; then
+  echo "  Python 3  OK"
+else
+  echo "  Python 3  없음"
+  missing=1
+fi
+
 check_command ffmpeg "FFmpeg "
 check_command ffprobe "FFprobe "
 
-if [ -x .venv/bin/python ] && .venv/bin/python -c 'import PIL' >/dev/null 2>&1; then
+# Windows venvs put the interpreter under Scripts/, unix under bin/.
+venv_python=""
+for candidate in .venv/bin/python .venv/Scripts/python.exe .venv/Scripts/python; do
+  if [ -x "$candidate" ]; then
+    venv_python="$candidate"
+    break
+  fi
+done
+if [ -n "$venv_python" ] && "$venv_python" -c 'import PIL' >/dev/null 2>&1; then
   echo "  자막 도구  OK"
 else
   echo "  자막 도구  없음"

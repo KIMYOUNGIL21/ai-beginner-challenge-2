@@ -21,7 +21,7 @@
 
 - `SKILL.md`: Day 6 `shorts-brief-v1` 이어받기, Mac/Windows 승인 설치, 키와 voice ID 분리
 - `references/prompt-formula.md`: 고정 가격 단정을 없애고 현재 Flow 화면 우선
-- `scripts/setup.sh`: 설치·zshrc 안내를 없앤 읽기 전용 상태 검사
+- `scripts/setup.sh`: 설치·zshrc 안내를 없앤 읽기 전용 상태 검사 (Windows의 `py`·`.venv\Scripts`도 함께 인식)
 - `scripts/make-short.sh`: 안전 실행기로 만든 음성만 재사용하고 키 export 금지
 
 키를 채팅이나 명령어에 직접 넣지 않고 시작 패키지의 마스킹 입력과 안전 실행기를
@@ -45,7 +45,7 @@ a1d75410b45fa58133f7d85b6d5d8faec599aadc4b56d0a3a79957ffaaaff819  SKILL.md
 664adec44eb987bee943f1e557a742cecbe8b6c841df1119100381b58cc4d6b2  scripts/check.py
 67744b66f1d27c2be53dde6387d9e1b1fa8673dafee865ae5b8c2a9c176f136e  scripts/ingest.py
 69157cfc0d04af3616806094fdaf18c5b76b19d42b804be18572968ac12625d3  scripts/plan.py
-67a96dcacae505d57d71a0a53d9b279cabe0f1bab2f0ee681c380e1efe3e6a20  scripts/setup.sh
+75556b33efc8cfa64baf1c0a7dc9b2f605a195a1770a39e355e2623e76695a2d  scripts/setup.sh
 81eff7efc7bc80ef96dd6e630afe1e70cd7700e1ca7cf6d02fab5a9c0b43781e  scripts/subs.py
 31fe8d9fc4581601c3eae1b4d031b18e47e940d96f0359b21edf2f8a7dc52765  scripts/tts.py
 2e0d00ef25825859198bc8446ffee47081644a27c0661b60799466f9ce160cfd  scripts/voices.py
