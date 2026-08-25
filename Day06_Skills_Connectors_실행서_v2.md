@@ -34,14 +34,13 @@
 
 ## 0. 기능은 각각 무엇인가요?
 
-![Code 로컬, 폴더 선택, 권한 모드 위치](day06-assets/screenshots/01-local-manual.png)
+![Code 로컬, 폴더 선택 위치](day06-assets/screenshots/01-local-manual.png)
 
 | 기능 | 쉬운 뜻 | 오늘 하는 일 |
 |---|---|---|
 | `CLAUDE.md` | 이 폴더에서 늘 지킬 말투·안전 규칙 | ZIP에 든 기본 규칙 먼저 읽기 |
 | Skill | 필요할 때 `/이름`으로 부르는 작업 순서 | 5컷 주문서 반복 생성 |
 | 커넥터 | Drive·Notion 같은 외부 자료 연결 | 아이디어 한 건 읽기(선택) |
-| `자동` 모드 | 기본 모드. 위험한 작업 전에는 Claude가 멈추고 물어봄 | 그대로 두기 |
 | Preview/브라우저 | 결과를 실제 화면으로 보는 곳 | 글자·모바일 폭 검수 |
 
 **한 줄 구분:** `CLAUDE.md`는 늘 지키는 규칙, Skill은 불러서 실행하는 절차, 커넥터는 내 폴더 밖 자료로 가는 통로입니다.
@@ -52,7 +51,6 @@
 2. 압축을 풀고 생긴 `day06-assets` 폴더 이름을 `Day06_Skill_닉네임`으로 바꿉니다.
 3. 안에 `CLAUDE.md`, `shorts-brief-maker.html`, `sample-memory.txt`, `input`, `output`, `QUICK_GUIDE.md`가 있는지 봅니다.
 4. Claude Desktop에서 **Code → 로컬 → 폴더 선택**으로 이 폴더를 엽니다.
-5. 모드와 노력(Effort)은 **기본값 그대로** 둡니다(자동 / 높음). 손댈 것이 없습니다.
 
 Mac에서 `.claude` 폴더가 안 보이는 것은 정상입니다. 이름 앞의 점 때문에 숨겨진 것입니다. ZIP 안에 이미 들어 있으므로 직접 만들 필요가 없습니다.
 
