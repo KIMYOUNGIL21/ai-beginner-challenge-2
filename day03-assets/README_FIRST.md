@@ -2,12 +2,15 @@
 
 1. 압축을 풀면 생기는 `day03-assets` 폴더 안에서 시작합니다.
 2. 먼저 `launch-kit/index.html`을 열고 위쪽 버튼을 모두 눌러 완성 방향을 봅니다.
-3. 기본 추천은 `briefs/home-reset-brief.txt`와 `images/home-reset-editorial.png`입니다.
-4. 다른 사례는 `briefs/second-career-brief.txt`와 짝이 맞는 사진을 씁니다.
-5. `screenshots/02_design_workspace_map.svg`는 실제 캡처가 아닌 버튼 위치 설명도입니다.
+3. 오늘 쓰는 자료는 아래 세 개로 정해져 있습니다. 고를 것이 없습니다.
+   - `briefs/home-reset-brief.txt`
+   - `images/home-reset-editorial.png`
+   - `brand-style.txt`
+4. `second-career`로 시작하는 파일은 완성 예시를 만들 때 쓴 것입니다. 오늘은 열지 않습니다.
+5. `screenshots` 폴더의 사진들은 실행서에 나오는 실제 화면 캡처입니다.
 6. Claude Desktop의 **☰ → 디자인**을 누릅니다. `Claude Design` 창이 새로 열립니다.
    **`새 프로젝트` 버튼은 없습니다.** 가운데 입력칸에 적고 오른쪽 `↑`를 누르면 그때 만들어집니다.
-7. 입력칸 왼쪽 `+`로 선택한 브리프·사진·`brand-style.txt`를 넣습니다.
+7. 입력칸 왼쪽 `+`로 위 세 파일을 하나씩 넣습니다. 폴더가 달라 한 번에 선택되지 않습니다.
    `Design system`은 `None` 그대로 둡니다.
 8. 커버 3안을 먼저 만들고 하나를 직접 고릅니다.
 9. 선택한 스타일로 카드뉴스 7장과 9:16 스토리 1장을 만듭니다.
