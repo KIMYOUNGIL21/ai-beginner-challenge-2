@@ -88,10 +88,12 @@
 2. ZIP을 풀어 생긴 `day03-assets` 폴더를 엽니다.
 3. `day03-assets` 안에서 아래 중 하나를 고릅니다.
 
-| 추천 | 브리프 | 사진 |
-|---|---|---|
-| A — 기본 | `briefs/home-reset-brief.txt` | `images/home-reset-editorial.png` |
-| B — 선택 | `briefs/second-career-brief.txt` | `images/second-career-editorial.png` |
+| 추천 | 주제 | 브리프 | 사진 |
+|---|---|---|---|
+| A — 기본 | 20분 생활 리셋 | `briefs/home-reset-brief.txt` | `images/home-reset-editorial.png` |
+| B — 선택 | 50대 두 번째 커리어 | `briefs/second-career-brief.txt` | `images/second-career-editorial.png` |
+
+한 줄을 통째로 고릅니다. **A의 브리프에 B의 사진을 섞지 않습니다.** 여기에 `brand-style.txt` 한 개를 더해 모두 세 파일을 씁니다.
 
 둘 다 수업용으로 제공된 자료입니다. 사진 속 인물은 특정 실존 인물이 아닌 생성 이미지입니다. 다른 사람의 유튜브 썸네일이나 인스타 게시물을 저장해 그대로 쓰지 않습니다.
 
@@ -103,11 +105,23 @@
 
 `Claude Design` 첫 화면(**What should we create?**)에서 시작합니다.
 
+넣을 파일은 **세 개**입니다. 압축을 푼 `day03-assets` 폴더 안에 있습니다.
+
+**기본(A — 20분 생활 리셋)을 골랐다면 이 세 개입니다.**
+
+```text
+day03-assets → briefs → home-reset-brief.txt
+day03-assets → images → home-reset-editorial.png
+day03-assets → brand-style.txt
+```
+
+B(50대 두 번째 커리어)를 골랐다면 앞의 두 개를 `second-career-brief.txt`와 `second-career-editorial.png`로 바꿉니다. **`brand-style.txt`는 둘 다 똑같이 넣습니다.**
+
 1. 가운데 입력칸 왼쪽의 **`+`** 를 누릅니다.
-2. 선택한 브리프, 짝이 맞는 사진, `brand-style.txt` **세 파일**을 넣습니다.
+2. 위 파일 하나를 골라 넣습니다. **세 파일이 서로 다른 폴더에 있어서 한 번에 다 선택되지 않습니다. `+`를 세 번 눌러 하나씩** 넣으세요.
 3. 아직 `↑`를 누르지 않습니다. 다음 단계의 문장을 적은 뒤에 함께 보냅니다.
 
-**이렇게 되면 성공:** 입력칸 안에 파일 세 개의 이름이 보입니다. 사진과 브리프가 서로 다른 사례라면 지금 다시 고릅니다.
+**이렇게 되면 성공:** 입력칸 안에 파일 세 개의 이름이 보입니다. 브리프와 사진의 앞부분이 **둘 다 `home-reset`** 이거나 **둘 다 `second-career`** 여야 합니다. 섞였으면 지금 바로잡습니다.
 
 프로젝트 이름은 만들어진 뒤 왼쪽 위 제목을 눌러 `Day3 브랜드 론칭 키트 닉네임`으로 바꿀 수 있습니다. 안 바꿔도 진행에는 지장이 없습니다.
 
