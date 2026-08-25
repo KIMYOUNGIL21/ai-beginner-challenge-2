@@ -1,16 +1,24 @@
 const lessons = [
-  { id: "welcome", day: "안내", title: "처음 오신 분께", file: "00_환영합니다.md" },
-  { id: "day0", day: "준비", title: "설치부터 첫 폴더까지", file: "Day00_시작전준비.md" },
-  { id: "terms", day: "준비", title: "왕초보 용어사전", file: "Day00_왕초보용어사전.md" },
-  { id: "rules", day: "공통", title: "매일 인증하는 방법", file: "00_오픈카톡_인증규칙.md" },
-  { id: "day1", day: "1일", title: "콘텐츠 스튜디오 2종", file: "Day01_Artifact진단기_실행서.md" },
-  { id: "day2", day: "2일", title: "LIFE BRAND 운영본부", file: "Day02_Projects_실행서_v2.md" },
-  { id: "day3", day: "3일", title: "브랜드 론칭 디자인", file: "Day03_Design_실행서_v2.md" },
-  { id: "day4", day: "4일", title: "가족 여행 브리핑북", file: "Day04_Cowork_실행서_v2.md" },
-  { id: "day5", day: "5일", title: "오늘의 작전실", file: "Day05_Code_실행서_v2.md" },
-  { id: "day6", day: "6일", title: "20~23초 숏츠 주문서", file: "Day06_Skills_Connectors_실행서_v2.md" },
-  { id: "day7", day: "7일", title: "20~23초 AI 쇼츠", file: "Day07_AI쇼츠.md" },
-  { id: "references", day: "참고", title: "공식 레퍼런스", file: "01_레퍼런스_목록.md" }
+  { track: "guide", id: "welcome", day: "안내", title: "처음 오신 분께", file: "00_환영합니다.md" },
+  { track: "guide", id: "day0", day: "준비", title: "설치부터 첫 폴더까지", file: "Day00_시작전준비.md" },
+  { track: "guide", id: "terms", day: "준비", title: "왕초보 용어사전", file: "Day00_왕초보용어사전.md" },
+  { track: "guide", id: "rules", day: "공통", title: "매일 인증하는 방법", file: "00_오픈카톡_인증규칙.md" },
+  { track: "guide", id: "day1", day: "1일", title: "콘텐츠 스튜디오 2종", file: "Day01_Artifact진단기_실행서.md" },
+  { track: "guide", id: "day2", day: "2일", title: "LIFE BRAND 운영본부", file: "Day02_Projects_실행서_v2.md" },
+  { track: "guide", id: "day3", day: "3일", title: "브랜드 론칭 디자인", file: "Day03_Design_실행서_v2.md" },
+  { track: "guide", id: "day4", day: "4일", title: "가족 여행 브리핑북", file: "Day04_Cowork_실행서_v2.md" },
+  { track: "guide", id: "day5", day: "5일", title: "오늘의 작전실", file: "Day05_Code_실행서_v2.md" },
+  { track: "guide", id: "day6", day: "6일", title: "20~23초 숏츠 주문서", file: "Day06_Skills_Connectors_실행서_v2.md" },
+  { track: "guide", id: "day7", day: "7일", title: "20~23초 AI 쇼츠", file: "Day07_AI쇼츠.md" },
+  { track: "guide", id: "references", day: "참고", title: "공식 레퍼런스", file: "01_레퍼런스_목록.md" },
+  { track: "5min", id: "m0", day: "안내", title: "폰으로 5분이란?", file: "5min-intro.md" },
+  { track: "5min", id: "m1", day: "1일", title: "폰에서도 화면이 됩니다", file: "5min-day1.md" },
+  { track: "5min", id: "m2", day: "2일", title: "프로젝트 기억 확인", file: "5min-day2.md" },
+  { track: "5min", id: "m3", day: "3일", title: "내 색 3개 · 제목 놀이", file: "5min-day3.md" },
+  { track: "5min", id: "m4", day: "4일", title: "냉장고 브리핑", file: "5min-day4.md" },
+  { track: "5min", id: "m5", day: "5일", title: "물 마시기 카운터", file: "5min-day5.md" },
+  { track: "5min", id: "m6", day: "6일", title: "내 말투 규칙 5줄", file: "5min-day6.md" },
+  { track: "5min", id: "m7", day: "7일", title: "다음 쇼츠 대본", file: "5min-day7.md" }
 ];
 
 const nav = document.querySelector("#lessonNav");
@@ -32,7 +40,13 @@ function readCompleted() {
 const completed = readCompleted();
 
 function renderNav(activeId) {
-  nav.innerHTML = lessons.map(lesson => `
+  const activeTrack = (lessons.find(l => l.id === activeId) || lessons[0]).track;
+  document.querySelectorAll(".tab").forEach(tab => {
+    const on = tab.dataset.track === activeTrack;
+    tab.classList.toggle("active", on);
+    tab.setAttribute("aria-selected", String(on));
+  });
+  nav.innerHTML = lessons.filter(l => l.track === activeTrack).map(lesson => `
     <a class="nav-link ${lesson.id === activeId ? "active" : ""}" href="#${lesson.id}" ${lesson.id === activeId ? 'aria-current="page"' : ""}>
       <span class="nav-day">${lesson.day}</span>
       <span>${lesson.title}</span>
@@ -105,10 +119,20 @@ async function loadLesson() {
     content.innerHTML = parser(markdown);
     enhanceArticle();
     document.title = `${lesson.title} | AI 왕초보 챌린지 2기`;
-    document.querySelector("#prevButton").disabled = index === 0;
-    document.querySelector("#nextButton").disabled = index === lessons.length - 1;
-    document.querySelector("#prevButton").onclick = () => location.hash = lessons[index - 1]?.id;
-    document.querySelector("#nextButton").onclick = () => location.hash = lessons[index + 1]?.id;
+    const trackLessons = lessons.filter(l => l.track === lesson.track);
+    const trackIndex = trackLessons.findIndex(l => l.id === lesson.id);
+    document.querySelector("#prevButton").disabled = trackIndex === 0;
+    document.querySelector("#nextButton").disabled = trackIndex === trackLessons.length - 1;
+    document.querySelector("#prevButton").onclick = () => location.hash = trackLessons[trackIndex - 1]?.id;
+    document.querySelector("#nextButton").onclick = () => location.hash = trackLessons[trackIndex + 1]?.id;
+    const hero = document.querySelector(".hero-block");
+    if (lesson.track === "5min") {
+      hero.querySelector(".hero-eyebrow").textContent = "그밤PD · 5-MIN PLAY";
+      hero.querySelector(".hero-title").textContent = "이불 속에서 5분, 폰으로 노는 시간";
+    } else {
+      hero.querySelector(".hero-eyebrow").textContent = "그밤PD · 7 DAYS JOURNEY";
+      hero.querySelector(".hero-title").textContent = "하루 한 걸음, 나도 만드는 사람";
+    }
     const completeButton = document.querySelector("#completeButton");
     completeButton.textContent = completed.has(lesson.id) ? "✓ 확인 완료" : "✓ 여기까지 봤어요";
     completeButton.setAttribute("aria-pressed", String(completed.has(lesson.id)));

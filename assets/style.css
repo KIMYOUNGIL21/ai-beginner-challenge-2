@@ -48,6 +48,48 @@ body {
   font-kerning: normal;
 }
 
+/* ------------------------------------------------------------------ tabs */
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 18px clamp(20px, 4vw, 48px) 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.tab {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 22px 13px;
+  border: 1.5px solid var(--hairline);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.25;
+}
+.tab small {
+  font-size: 12px;
+  font-weight: 450;
+  color: var(--ink-soft, #666);
+}
+.tab.active {
+  background: var(--primary, #0f0f0f);
+  border-color: var(--primary, #0f0f0f);
+  color: var(--inverse-ink, #fff);
+}
+.tab.active small { color: rgba(255, 255, 255, 0.72); }
+
+@media (max-width: 800px) {
+  .tabs { padding: 14px 16px 0; gap: 8px; }
+  .tab { flex: 1 1 0; min-width: 0; padding: 11px 12px 12px; font-size: 15px; }
+  .tab small { font-size: 11px; white-space: normal; }
+}
+
 /* ---------------------------------------------------------------- topbar */
 
 .topbar {
@@ -548,7 +590,7 @@ input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px
 }
 
 @media print {
-  .topbar, .ribbon, .sidebar, .pager, .menu-button, .hero-block, .site-footer { display: none; }
+  .topbar, .ribbon, .tabs, .sidebar, .pager, .menu-button, .hero-block, .site-footer { display: none; }
   .main { padding: 0; }
   body { font-size: 12pt; }
 }
