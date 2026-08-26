@@ -15,7 +15,7 @@ day06-assets/
 
 1. `shorts-brief-maker.html`을 두 번 눌러 설치 없이 완성 예시를 체험합니다.
 2. Code의 새 채팅에서 `/shorts-brief`를 실행합니다.
-3. 완성된 두 파일을 `day06-handoff` 폴더에 복사합니다. `input/brief.json`은 복사한 뒤 이름을 `brief.json`으로 둡니다.
-4. Day 7 시작 폴더 안에 `day06-handoff`를 옮기면 대본을 다시 입력하지 않고 이어집니다.
+3. 폴더 안에 `day06-handoff`라는 **새 폴더를 직접 만든 뒤**, 완성된 두 파일을 그 안에 복사합니다. `input/brief.json`은 복사한 뒤 이름을 `brief.json`으로 둡니다.
+4. Day 7 시작 폴더 안에 `day06-handoff`를 옮기면 대본을 다시 입력하지 않고 이어집니다. 같은 이름 폴더가 이미 있다고 물으면 대체해도 안전합니다.
 
 API 키와 외부 프로그램은 필요 없습니다.
