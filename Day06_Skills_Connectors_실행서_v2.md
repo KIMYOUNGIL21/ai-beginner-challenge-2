@@ -24,7 +24,7 @@
 
 1. [Day 6 시작 자료 ZIP](downloads/day06-start.zip)을 받으세요.
 2. 압축을 풀고, 생긴 `day06-assets` 폴더 이름을 `Day06_Skill_닉네임`으로 바꾸세요.
-3. 폴더 안에 `shorts-brief-maker.html` 파일이 보이면 준비 끝입니다. (`.claude` 폴더가 안 보여도 정상이에요. 이름이 점으로 시작해서 숨겨져 있을 뿐, ZIP에 들어 있습니다.)
+3. 폴더 안에 `shorts-brief-maker.html` 파일이 보이면 준비 끝입니다.
 4. Claude Desktop에서 **Code → 로컬 → 폴더 선택**으로 이 폴더를 여세요.
 
 첫 메시지를 보내 볼까요?
