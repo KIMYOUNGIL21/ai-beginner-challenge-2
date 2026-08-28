@@ -1,13 +1,14 @@
 # Day 6 한 장 실행표 — `/shorts-brief`
 
-Skill은 완성 파일을 넣어 두는 상자가 아니라 **Claude가 새 채팅에서도 반복할 작업 순서**입니다.
+Skill은 미리 적어 둔 작업 순서표입니다. `/shorts-brief` 하나만 부르면 매번 같은 형식의 숏츠 주문서가 나옵니다.
 
-## 네 단계
+## 다섯 단계
 
-1. **기능 공부:** `CLAUDE.md`·Skill·커넥터를 구분합니다.
-2. **작은 성공:** `shorts-brief-maker.html`에서 주제 한 줄을 바꿔 5컷을 움직입니다.
-3. **완성 결과:** `/shorts-brief`로 훅 3안과 20~23초·5컷 주문서를 만듭니다.
-4. **연결:** `shorts-brief-v1` JSON을 검사해 Day 7로 넘깁니다.
+1. **폴더 열기:** ZIP을 풀고 Code → 로컬 → 폴더 선택으로 엽니다.
+2. **미리 구경:** `shorts-brief-maker.html`에서 얼음 예시를 눌러 완성 모양을 봅니다.
+3. **실행:** `/shorts-brief`에 다섯 줄을 넣어 훅 3안과 5컷을 받습니다.
+4. **확인:** `shorts-brief.html`을 브라우저로 열고, 5컷·20~23초 검사를 맡깁니다.
+5. **전달 준비:** `day06-handoff` 폴더에 `brief.json`과 `shorts-brief.html`을 복사합니다.
 
 ## Skill 호출에 필요한 다섯 가지
 
@@ -20,15 +21,7 @@ Skill은 완성 파일을 넣어 두는 상자가 아니라 **Claude가 새 채�
 말투: __________
 ```
 
-## Skill 파일에서 확인할 것
-
-- 위치: `.claude/skills/shorts-brief/SKILL.md`
-- 빠진 입력을 추측하지 않고 질문한다.
-- 훅 3안과 C1~C5를 먼저 제안하고 승인을 기다린다.
-- 컷마다 내레이션은 한 문장, 계획상 5초 이하이다.
-- `input/brief.json`과 `output/shorts-brief.html`만 만든다.
-- JSON은 `shorts-brief-v1`, C1~C5, 계획 합계 20~23초이다.
-- 외부 설치와 API를 요구하지 않는다.
+`:` 뒤만 내 것으로 바꾸면 됩니다. 예시 그대로 보내도 완주할 수 있습니다.
 
 ## 결과물
 
@@ -42,6 +35,5 @@ Skill은 완성 파일을 넣어 두는 상자가 아니라 **Claude가 새 채�
 1. `/shorts-brief`와 내 다섯 입력을 보여 줍니다.
 2. Skill이 만든 훅 3안을 보여 줍니다.
 3. 완성 HTML의 C1~C5를 보여 줍니다.
-4. JSON 검사 결과 `shorts-brief-v1 / 5컷 / 20~23초`를 보여 줍니다.
 
-전체 버튼 위치·프롬프트·복구법은 [Day06 Skills 실행서](Day06_Skills_Connectors_실행서_v2.md)를 따릅니다.
+전체 버튼 위치·프롬프트·복구법은 [Day06 실행서](Day06_Skills_Connectors_실행서_v2.md)를 따릅니다.
