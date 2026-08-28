@@ -46,7 +46,7 @@ if [ -f work/narration.wav ] && [ -f work/words.json ] \
   echo "  이미 생성된 내레이션을 재사용합니다 (다시 만들려면 FORCE_TTS=1)"
 else
   die "안전하게 만든 narration.wav와 words.json이 필요합니다.
-   시작 패키지의 TYPECAST_SETUP.md를 읽고 run_tts_secure_mac.sh 또는
+   시작 패키지의 TYPECAST_SETUP.html을 읽고 run_tts_secure_mac.sh 또는
    run_tts_secure_windows.ps1로 먼저 음성을 만드세요. 키를 export하지 마세요."
 fi
 

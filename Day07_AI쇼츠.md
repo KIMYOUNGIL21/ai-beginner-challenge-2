@@ -45,7 +45,7 @@ API 키 값은 읽거나 출력하지 마세요.
 
 ### 0-4. Typecast와 Flow 준비
 
-- [Typecast 키 연결 안내](day07-assets/TYPECAST_SETUP.md)를 열어 4단계대로 하세요. Typecast 로그인 → API 키 복사 → `typecast-key.txt`에 붙여넣기 → 저장, 그게 전부입니다. 키는 Claude 채팅이나 카카오톡에 붙이지 않습니다.
+- [Typecast 키 연결 안내](day07-assets/TYPECAST_SETUP.html)를 열어 4단계대로 하세요. Typecast 로그인 → API 키 복사 → `typecast-key.txt`에 붙여넣기 → 저장, 그게 전부입니다. 키는 Claude 채팅이나 카카오톡에 붙이지 않습니다.
 - [Google Flow](https://labs.google/fx/ko/tools/flow)에 로그인하고 화면에 크레딧 숫자가 보이는지 확인하세요. 크레딧 계산은 6단계에서 합니다.
 
 ---
@@ -155,7 +155,7 @@ prompts.md로 저장한 뒤 C1~C5 목록을 한 번에 보여 주세요. 아직 
 
 ## 6. Flow에서 세로 영상 5개 만들기
 
-[Flow 5컷 화면 안내](day07-assets/FLOW_5CUT_GUIDE.md)를 옆에 열고 진행하세요.
+[Flow 5컷 화면 안내](day07-assets/FLOW_5CUT_GUIDE.html)를 옆에 열고 진행하세요.
 
 ### 처음 한 번만 설정
 

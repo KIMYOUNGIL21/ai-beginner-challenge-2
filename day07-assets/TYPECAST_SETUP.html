@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Typecast 키 연결 — 4단계</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#ece8de;color:#171b25;font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.6}
+  main{width:min(760px,92vw);margin:0 auto;padding:48px 0 80px}
+  .tag{display:inline-block;padding:7px 12px;border-radius:999px;background:#ffe24a;font-size:12px;font-weight:950;letter-spacing:.02em}
+  h1{font-size:clamp(28px,4.4vw,40px);line-height:1.15;margin:16px 0 8px}
+  .lead{color:#525a68;font-size:16px;margin:0 0 36px}
+  .steps{display:flex;flex-direction:column;gap:0}
+  .step{position:relative;padding:0 0 34px 56px}
+  .step:not(:last-child)::before{content:"";position:absolute;left:19px;top:44px;bottom:-6px;width:2px;background:#d5d8df}
+  .num{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#2251ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:16px}
+  .step h2{font-size:18px;margin:6px 0 8px}
+  .step p{margin:0;color:#33394a}
+  .step a{color:#2251ff;font-weight:800;text-decoration:none;border-bottom:2px solid #2251ff}
+  .step code{background:#fff;border:1px solid #d5d8df;border-radius:6px;padding:2px 6px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px}
+  .note{margin-top:36px;padding:20px 22px;border-radius:16px;background:#fff;box-shadow:0 12px 34px #3c35251c}
+  .note b{display:block;font-size:13px;letter-spacing:.06em;color:#c23a21;margin-bottom:6px}
+  .note p{margin:0;color:#33394a}
+  .footer{margin-top:22px;font-size:13px;color:#818a99}
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">DAY 7 · TYPECAST 연결</span>
+  <h1>Typecast 키 연결 — 4단계면 끝</h1>
+  <p class="lead">Typecast는 문장을 목소리로 바꿔 주는 서비스입니다. 열쇠(API 키) 하나를 발급받아 파일에 붙여넣으면 연결이 끝납니다.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h2>Typecast 로그인</h2>
+      <p><a href="https://typecast.ai/kr" target="_blank" rel="noopener">Typecast</a>에 접속해 로그인하세요. 계정이 없으면 가입부터 하면 됩니다.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h2>API 키 복사</h2>
+      <p><a href="https://studio.typecast.ai/developers/api" target="_blank" rel="noopener">Typecast 개발자 페이지</a>로 들어가 API 키를 만들고 <b>복사</b>를 누르세요.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h2>파일에 붙여넣기</h2>
+      <p><code>day07-start</code> 폴더 안의 <code>typecast-key.txt</code>를 두 번 눌러 여세요. 빈 파일이 열리면 복사한 키를 붙여넣으세요.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h2>저장하고 닫기</h2>
+      <p>Windows는 <code>Ctrl+S</code>, Mac은 <code>Cmd+S</code>로 저장하고 창을 닫으면 끝입니다. 조립 도구가 이 파일에서 키를 알아서 읽습니다.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>지킬 것 하나</b>
+    <p>키는 내 계정의 열쇠입니다. 채팅·카카오톡·인증 캡처에 올리지 마세요. 실수로 올렸다면 개발자 페이지에서 그 키를 지우고 새로 만들어 다시 붙여넣으면 됩니다.</p>
+  </div>
+
+  <p class="footer">키 발급 화면이 이 설명과 다르게 보이면 개강 당일 운영자 안내를 따르세요.</p>
+</main>
+</body>
+</html>

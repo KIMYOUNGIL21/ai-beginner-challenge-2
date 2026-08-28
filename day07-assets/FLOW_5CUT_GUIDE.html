@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Flow — 세로 영상 5개 받기</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#ece8de;color:#171b25;font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.6}
+  main{width:min(820px,92vw);margin:0 auto;padding:48px 0 80px}
+  .tag{display:inline-block;padding:7px 12px;border-radius:999px;background:#ffe24a;font-size:12px;font-weight:950;letter-spacing:.02em}
+  h1{font-size:clamp(26px,4.2vw,38px);line-height:1.15;margin:16px 0 8px}
+  .lead{color:#525a68;font-size:16px;margin:0 0 6px}
+  .lead b{color:#171b25}
+  section{margin-top:36px}
+  h2{font-size:15px;font-weight:950;display:flex;align-items:center;gap:10px;margin:0 0 16px}
+  h2 span.bar{width:22px;height:4px;background:#2251ff;display:inline-block;border-radius:2px}
+  .checklist{background:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 12px 34px #3c35251c}
+  .checklist ul{margin:0;padding-left:20px}
+  .checklist li{margin:6px 0}
+  .steps{display:flex;flex-direction:column;gap:0}
+  .step{position:relative;padding:0 0 26px 56px}
+  .step:not(:last-child)::before{content:"";position:absolute;left:19px;top:44px;bottom:-4px;width:2px;background:#d5d8df}
+  .num{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#2251ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:16px}
+  .step p{margin:6px 0 0;color:#33394a}
+  .step code{background:#fff;border:1px solid #d5d8df;border-radius:6px;padding:2px 6px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px}
+  .shot{margin:14px 0 0 0;border-radius:12px;overflow:hidden;box-shadow:0 12px 34px #3c35251c;border:1px solid #ffffff}
+  .shot img{display:block;width:100%;height:auto}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 34px #3c35251c}
+  th,td{padding:11px 14px;text-align:left;font-size:14px}
+  thead th{background:#171b25;color:#fff;font-weight:900}
+  tbody tr:nth-child(even){background:#f5f1e8}
+  tbody td:first-child{font-weight:900;color:#2251ff}
+  .progress td{text-align:center;font-weight:900;color:#818a99}
+  .progress td:first-child,.progress td:nth-child(2){text-align:left;color:#171b25}
+  pre{background:#101522;color:#fff;padding:14px 16px;border-radius:12px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;overflow-x:auto;margin:12px 0 0}
+  .note{margin-top:14px;padding:18px 20px;border-radius:14px;background:#fff;box-shadow:0 12px 34px #3c35251c}
+  .note b{display:block;font-size:13px;letter-spacing:.06em;color:#c23a21;margin-bottom:6px}
+  .note p{margin:0;color:#33394a}
+  .note.warn{background:#171b25;color:#dce4ff}
+  .note.warn b{color:#ffe24a}
+  .note.warn p{color:#dce4ff}
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">DAY 7 · GOOGLE FLOW</span>
+  <h1>Google Flow — 세로 영상 5개 받기</h1>
+  <p class="lead">Claude가 만든 <b>prompts.md</b>의 C1~C5 주문문을 Flow에 넣고, 세로 영상 다섯 개를 다운로드합니다. <b>영상 생성만 사람이 하고, 파일 정리와 최종 조립은 Claude가 합니다.</b></p>
+
+  <section>
+    <h2><span class="bar"></span>시작 전에 확인</h2>
+    <div class="checklist">
+      <ul>
+        <li><code>my-short/prompts.md</code>에 C1~C5가 있다.</li>
+        <li>Flow 로그인과 현재 크레딧을 확인했다.</li>
+        <li>화면의 실제 차감 숫자에 5를 곱해 다섯 컷의 필요량을 확인했다. 숫자는 모델·계정·시점에 따라 달라질 수 있다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>처음 한 번만 설정</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <p><a href="https://labs.google/fx/ko/tools/flow" target="_blank" rel="noopener">Google Flow</a>를 Chrome 또는 Edge에서 엽니다. 처음이면 <b>Create with Google Flow</b>를 누르고 로그인합니다.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <p>대시보드의 <b>+ 새 프로젝트</b>를 누릅니다.</p>
+        <div class="shot"><img src="screenshots/02-flow-new-project.png" alt="새 프로젝트 버튼"></div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <p>왼쪽 메뉴에서 <b>모든 미디어</b>를 고르고, 아래 입력칸 오른쪽의 회색 설정 단추를 누른 뒤 아래 표대로 고릅니다.</p>
+        <table style="margin-top:12px">
+          <thead><tr><th>항목</th><th>선택</th><th>확인 이유</th></tr></thead>
+          <tbody>
+            <tr><td>종류</td><td>동영상</td><td>정지 이미지가 아니라 영상 생성</td></tr>
+            <tr><td>방식</td><td>애셋</td><td>텍스트 주문문으로 새 영상 생성</td></tr>
+            <tr><td>화면비</td><td>9:16</td><td>쇼츠용 세로 화면</td></tr>
+            <tr><td>모델</td><td>Omni Flash</td><td>원본 파이프라인 검증 모델</td></tr>
+            <tr><td>길이</td><td>6s</td><td>컷당 최대 5초를 쓰고 끝 1초를 버림</td></tr>
+            <tr><td>개수</td><td>x1</td><td>한 번에 하나만 생성해 크레딧 보호</td></tr>
+          </tbody>
+        </table>
+        <div class="shot"><img src="screenshots/03-flow-video-9x16-x1.png" alt="9:16과 x1 설정"></div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <p>설정 패널 아래의 <b>생성 시 사용 크레딧</b>을 읽고 그 숫자에 5를 곱합니다. 남은 양보다 크거나 차감 방식이 이해되지 않으면 <b>만들기를 누르지 않고</b> 화면을 Claude와 운영자에게 보여 줍니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>C1~C5 생성</h2>
+    <p style="color:#33394a;margin:0 0 6px">긴 문장을 직접 긁어 복사하지 말고 Claude에게 요청합니다.</p>
+    <pre>C1 프롬프트만 클립보드에 복사해 주세요. 전문은 채팅에 다시 출력하지 마세요.</pre>
+    <div class="steps" style="margin-top:22px">
+      <div class="step">
+        <div class="num">1</div>
+        <p>Flow 입력칸에 붙여넣고, 설정 단추에 <code>동영상 · 9:16 · 6s · x1</code>이 보이는지 다시 본 뒤 <b>만들기</b>를 누릅니다.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <p>C2, C3, C4, C5도 같은 방식으로 바로 생성에 걸어 둡니다. 컷마다 Claude에게 새로 복사 요청을 해야 직전 컷과 문장이 겹치지 않습니다.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <p>완성본을 처음부터 끝까지 재생해 이상한 글자, 무너진 사람·물체, 멈춘 카메라가 없는지 확인합니다.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <p>다운로드 단추를 눌러 <b>완성되는 순서대로 한 개씩</b> 받습니다. 파일명은 바꾸지 않습니다.</p>
+        <div class="shot"><img src="screenshots/04-flow-result-download.png" alt="다운로드 단추"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>진행표</h2>
+    <table class="progress">
+      <thead><tr><th>컷</th><th>역할</th><th>9:16·6s·x1</th><th>내용 확인</th><th>한 개씩 다운로드</th></tr></thead>
+      <tbody>
+        <tr><td>C1</td><td>훅</td><td>☐</td><td>☐</td><td>☐</td></tr>
+        <tr><td>C2</td><td>반전</td><td>☐</td><td>☐</td><td>☐</td></tr>
+        <tr><td>C3</td><td>원리 A</td><td>☐</td><td>☐</td><td>☐</td></tr>
+        <tr><td>C4</td><td>같은 구도·원리 B</td><td>☐</td><td>☐</td><td>☐</td></tr>
+        <tr><td>C5</td><td>엔딩</td><td>☐</td><td>☐</td><td>☐</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="note">
+    <b>꼭 지킬 한 가지</b>
+    <p>생성은 다섯 개를 연달아 걸어도 되지만, 다운로드는 완성되는 순서대로 한 개씩 합니다. 여러 개를 동시에 받으면 저장 시각이 같아져 C1~C5 순서를 자동으로 찾기 어렵습니다. 이미 한꺼번에 받았다면 삭제하거나 이름을 바꾸지 말고 Claude에게 말합니다.</p>
+    <pre>Flow 영상을 한꺼번에 다운로드했어요. 순서를 추측하지 말고 확인 시트를 열어 주세요.</pre>
+  </div>
+
+  <div class="note warn">
+    <b>크레딧이 끝났다면</b>
+    <p>성공한 컷을 다시 만들지 않습니다. 받은 영상만으로 완성하도록 요청합니다.</p>
+    <pre style="background:#0b0f1a">크레딧이 끝났어요. 지금 받은 클립만으로 문장 경계와 자막 시간은 유지하며 완성해 주세요.</pre>
+  </div>
+</main>
+</body>
+</html>

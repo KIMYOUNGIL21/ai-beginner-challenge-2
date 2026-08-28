@@ -35,7 +35,7 @@ description: Produce a 20-23 second Korean YouTube Short end to end, and handle 
 | 사용자가 말하면 | 한다 |
 |---|---|
 | 쇼츠 만드는 데 필요한 프로그램 확인하고, 없으면 설치해줘 | 먼저 `scripts/setup.sh`로 읽기 전용 점검. 빠지면 시작 패키지의 운영체제별 PRECHECK와 INSTALL_CLINIC 안내. 임의 설치 금지 |
-| 타임캐스트를 안전하게 연결하고 싶어 | 키를 채팅으로 받지 않고 `TYPECAST_SETUP.md`의 4단계(파일에 붙여넣기)를 안내 |
+| 타임캐스트를 안전하게 연결하고 싶어 | 키를 채팅으로 받지 않고 `TYPECAST_SETUP.html`의 4단계(파일에 붙여넣기)를 안내 |
 | 쓸 수 있는 목소리 보여줘 / 목소리 바꿔줘 | `voices.py`로 샘플을 만들어 들려주고 고르게 |
 | 컷별로 프롬프트랑 생성 길이 하나씩 보여줘 | C1부터 하나씩, 복사하기 좋게 |
 | `C1` 프롬프트 복사해줘 / 다음 | 그 컷 프롬프트만 클립보드로 (`pbcopy`) |
@@ -63,7 +63,7 @@ description: Produce a 20-23 second Korean YouTube Short end to end, and handle 
 
 ### 키 등록
 
-**API 키를 채팅으로 받지 않는다.** 시작 폴더의 `TYPECAST_SETUP.md`를 보여 주고,
+**API 키를 채팅으로 받지 않는다.** 시작 폴더의 `TYPECAST_SETUP.html`를 보여 주고,
 사용자가 시작 폴더의 `typecast-key.txt`를 직접 열어 키를 붙여넣고
 저장하게 한다. `typecast-key.txt`의 내용은 읽거나 출력하지 않고,
 파일 존재만 확인한다. 음성 합성은 시작 폴더의

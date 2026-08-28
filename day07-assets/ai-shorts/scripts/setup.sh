@@ -67,4 +67,4 @@ fi
 
 echo
 echo "준비 완료: API 없는 데모를 조립할 수 있습니다."
-echo "실제 목소리는 TYPECAST_SETUP.md의 가려진 입력 방식으로 별도 연결하세요."
+echo "실제 목소리는 TYPECAST_SETUP.html의 안내대로 typecast-key.txt에 키를 붙여넣어 연결하세요."

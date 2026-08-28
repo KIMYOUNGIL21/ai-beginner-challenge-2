@@ -11,4 +11,4 @@ Flow 실습 직전에는 `flow-board.html`을 브라우저에서 크게 엽니�
 
 처음부터 기술 명령을 입력하지 마세요. Mac은 `PRECHECK_MAC.md`, Windows는 `PRECHECK_WINDOWS.md`를 Claude가 읽고 한 단계씩 안내하게 합니다. Python·FFmpeg가 없다면 수강생 혼자 설치하지 말고 운영자와 `INSTALL_CLINIC.md`를 진행합니다.
 
-실제 내 쇼츠에는 Typecast와 Google Flow 계정 상태가 필요합니다. API 키는 Claude 채팅에 붙여넣지 않습니다. 전체 순서는 [온라인 Day 7 전체 실행서](https://kimyoungil21.github.io/ai-beginner-challenge-2/#day7), Flow 화면은 `FLOW_5CUT_GUIDE.md`를 봅니다. 최종 파일명은 `D07_닉네임_쇼츠.mp4`입니다.
+실제 내 쇼츠에는 Typecast와 Google Flow 계정 상태가 필요합니다. API 키는 Claude 채팅에 붙여넣지 않습니다. 전체 순서는 [온라인 Day 7 전체 실행서](https://kimyoungil21.github.io/ai-beginner-challenge-2/#day7), Typecast 키 연결은 `TYPECAST_SETUP.html`, Flow 화면은 `FLOW_5CUT_GUIDE.html`을 봅니다. 최종 파일명은 `D07_닉네임_쇼츠.mp4`입니다.

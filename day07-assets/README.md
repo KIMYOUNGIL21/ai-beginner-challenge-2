@@ -44,6 +44,6 @@ $aiShortsDir = Join-Path $HOME ".claude\skills\ai-shorts"
 
 위 명령의 `D07_demo_short.mp4`는 파이프라인 자체를 확인하는 기술 샘플명이다. 수강생의 연습본과 최종본은 각각 `D07_닉네임_연습.mp4`, `D07_닉네임_쇼츠.mp4`로 저장한다.
 
-실제 Typecast 호출 전에 `TYPECAST_SETUP.md`대로 `typecast-key.txt`에 키를 붙여넣는다. 목소리 후보는 `run_voices_secure_mac.sh` 또는 `run_voices_secure_windows.ps1`로 듣고, 고른 `voice_id`는 `my-short/voice.txt`에 저장한다. 전체 음성은 그 ID를 인자로 넘겨 `run_tts_secure_mac.sh` 또는 `run_tts_secure_windows.ps1`을 통해 호출한다. 비밀키 파일은 Claude가 열거나 수정하지 않으며 실제 키를 채팅에 붙여넣지 않는다.
+실제 Typecast 호출 전에 `TYPECAST_SETUP.html`대로 `typecast-key.txt`에 키를 붙여넣는다. 목소리 후보는 `run_voices_secure_mac.sh` 또는 `run_voices_secure_windows.ps1`로 듣고, 고른 `voice_id`는 `my-short/voice.txt`에 저장한다. 전체 음성은 그 ID를 인자로 넘겨 `run_tts_secure_mac.sh` 또는 `run_tts_secure_windows.ps1`을 통해 호출한다. 비밀키 파일은 Claude가 열거나 수정하지 않으며 실제 키를 채팅에 붙여넣지 않는다.
 
 장면 그래픽은 교재용으로 직접 만든 HTML/CSS 원본을 FFmpeg 모션 영상으로 바꾼 것이다. 외부 사진·영상·음악은 사용하지 않았다. 자세한 기록은 [`demo-project/licenses/SOURCES.md`](demo-project/licenses/SOURCES.md)에서 확인한다.
