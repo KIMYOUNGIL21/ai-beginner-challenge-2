@@ -24,7 +24,7 @@
 - `scripts/setup.sh`: 설치·zshrc 안내를 없앤 읽기 전용 상태 검사 (Windows의 `py`·`.venv\Scripts`도 함께 인식)
 - `scripts/make-short.sh`: 안전 실행기로 만든 음성만 재사용하고 키 export 금지 (Windows의 `py`·`.venv\Scripts`도 함께 인식)
 
-키를 채팅이나 명령어에 직접 넣지 않고 시작 패키지의 마스킹 입력과 안전 실행기를
+키를 채팅이나 명령어에 직접 넣지 않고 시작 패키지의 `typecast-key.txt`와 안전 실행기를
 사용합니다. 안전 실행기로 이미 만든 `narration.wav`·`words.json`은
 `make-short.sh`가 키 없이 재사용할 수 있습니다.
 

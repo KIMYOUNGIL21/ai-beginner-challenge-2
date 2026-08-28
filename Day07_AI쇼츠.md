@@ -45,7 +45,7 @@ API 키 값은 읽거나 출력하지 마세요.
 
 ### 0-4. Typecast와 Flow 준비
 
-- [Typecast 안전 연결 안내](day07-assets/TYPECAST_SETUP.md)를 여세요. API 키는 Claude 채팅이나 카카오톡에 붙이지 말고, 안내 파일의 가려진 입력창에 본인이 직접 붙여넣으세요.
+- [Typecast 키 연결 안내](day07-assets/TYPECAST_SETUP.md)를 열어 4단계대로 하세요. Typecast 로그인 → API 키 복사 → `typecast-key.txt`에 붙여넣기 → 저장, 그게 전부입니다. 키는 Claude 채팅이나 카카오톡에 붙이지 않습니다.
 - [Google Flow](https://labs.google/fx/ko/tools/flow)에 로그인하고 화면에 크레딧 숫자가 보이는지 확인하세요. 크레딧 계산은 6단계에서 합니다.
 
 ---

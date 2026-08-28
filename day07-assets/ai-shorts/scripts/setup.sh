@@ -50,9 +50,10 @@ else
   missing=1
 fi
 
+key_file="./typecast-key.txt"
 secret_file="$HOME/.config/ai-shorts/secrets.env"
-if [ -f "$secret_file" ]; then
-  echo "  Typecast  로컬 보안 파일 있음 (값은 읽지 않음)"
+if [ -s "$key_file" ] || [ -f "$secret_file" ]; then
+  echo "  Typecast  키 있음 (값은 읽지 않음)"
 else
   echo "  Typecast  아직 연결 안 됨 — API 없는 데모는 실행 가능"
 fi
