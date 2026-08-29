@@ -11,7 +11,7 @@ Skill 설치 완료
 
 ## 1. 먼저 읽기 전용으로 확인
 
-Claude Desktop에서 `day07-start` 폴더를 **Code → 로컬 → 폴더 선택… → 수동**으로 열고 다음 문장을 보냅니다.
+Claude Desktop에서 `day07-start` 폴더를 **Code → 로컬 → 폴더 선택…**으로 열고 다음 문장을 보냅니다.
 
 ```text
 파일을 바꾸거나 설치하지 말고 PRECHECK_MAC.md 또는 PRECHECK_WINDOWS.md를 읽어 주세요.
