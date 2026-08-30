@@ -23,9 +23,9 @@
 ![Code 로컬, 폴더 선택 위치](day06-assets/screenshots/01-local-manual.png)
 
 1. [Day 6 시작 자료 ZIP](downloads/day06-start.zip)을 받으세요.
-2. 압축을 풀고, 생긴 `day06-assets` 폴더 이름을 `Day06_Skill_닉네임`으로 바꾸세요.
-3. 폴더 안에 `shorts-brief-maker.html` 파일이 보이면 준비 끝입니다.
-4. Claude Desktop에서 **Code → 로컬 → 폴더 선택**으로 이 폴더를 여세요.
+2. 압축을 풀면 `day06-assets`라는 폴더가 생깁니다. **새 폴더를 만들지 말고, 이 폴더 자체의 이름만** `Day06_Skill_닉네임`으로 바꾸세요.
+3. 이름을 바꾼 폴더를 열었을 때 `shorts-brief-maker.html` 파일이 **바로** 보이면 준비 끝입니다. 또 다른 폴더 안에 들어 있다면 잘못 옮겨진 것이니 그 폴더를 꺼내 바탕화면으로 옮기세요.
+4. Claude Desktop에서 **Code → 로컬 → 폴더 선택**으로, 방금 이름을 바꾼 바로 그 `Day06_Skill_닉네임` 폴더를 여세요.
 
 첫 메시지를 보내 볼까요?
 
@@ -92,7 +92,7 @@ input/brief.json을 바꾸지 말고 검사만 해 주세요.
 1. 오늘 폴더 안에 `day06-handoff`라는 새 폴더를 만드세요.
 2. `input` 폴더의 `brief.json`을 복사해서 `day06-handoff` 안에 넣으세요.
 3. `output` 폴더의 `shorts-brief.html`도 복사해서 같은 폴더에 넣으세요.
-4. 내일 Day 7 시작 패키지를 풀면, 이 `day06-handoff` 폴더를 `day07-start` 폴더 안으로 그대로 옮깁니다. `day07-start` 안에 같은 이름의 폴더가 이미 있어 **"대체하시겠습니까"라고 물으면 대체를 눌러도 안전합니다** — 안에는 안내문 한 장뿐입니다.
+4. 내일 Day 7 시작 패키지를 풀면, 이 `day06-handoff` 폴더를 `day07-start` 폴더 안으로 그대로 옮깁니다. `day07-start` 안에도 안내문 한 장뿐인 같은 이름 폴더가 미리 들어 있어서, 옮기는 방식에 따라 **"대체" 또는 "병합"을 물을 수도, 창 없이 그냥 합쳐질 수도** 있습니다 — 어느 쪽이든 그대로 진행해도 안전합니다.
 
 > Day 7은 `brief.json`을 읽어 대본을 자동으로 만듭니다. 오늘 쓴 문장을 다시 타이핑할 일은 없어요.
 
@@ -117,7 +117,7 @@ input/brief.json을 바꾸지 말고 검사만 해 주세요.
 
 | 증상 | 한 번만 할 조치 |
 |---|---|
-| `/`를 눌러도 `shorts-brief`가 목록에 없음 | 1단계에서 이름 바꾼 그 폴더를 연 게 맞는지 확인하고, 새 Code 채팅을 열어 다시 `/` 입력 |
+| `/`를 눌러도 `shorts-brief`가 목록에 없음 | Finder/탐색기에서 지금 연 폴더 안에 `shorts-brief-maker.html`이 **바로** 보이는지 확인 (또 다른 폴더 속에 들어 있으면 안 됨). 아니라면 Code를 닫고 1단계에서 이름 바꾼 그 폴더로 다시 열기 |
 | Skill이 설명만 하고 파일을 안 만듦 | `설명은 됐으니 input/brief.json과 output/shorts-brief.html 두 파일을 실제로 만들어 주세요` 보내기 |
 | 검사에서 컷 수나 초가 틀림 | `틀린 부분만 고치고 같은 검사를 다시 해 주세요` 보내기 |
 | 브라우저 화면과 채팅 결과가 다름 | `output/shorts-brief.html을 input/brief.json과 같은 내용으로 맞춰 주세요` 보내기 |

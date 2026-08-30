@@ -53,8 +53,13 @@ def candidates(key, query, gender, n):
         ids = None
 
     allv = {v["voice_id"]: v for v in call("/v2/voices", key)}
+    # Recommendations skew toward whatever the query implied (often male for a
+    # neutral tone description), so a gender filter can leave too few — or
+    # zero — matches inside `ids` alone. Fall back to the full voice list for
+    # the rest instead of silently returning a short/empty result.
+    ordered_ids = list(dict.fromkeys((ids or []) + list(allv)))
     picked = []
-    for vid in (ids or allv):
+    for vid in ordered_ids:
         v = allv.get(vid)
         if not v:
             continue
