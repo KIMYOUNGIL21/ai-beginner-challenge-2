@@ -11,6 +11,12 @@ const lessons = [
   { track: "guide", id: "day6", day: "6일", title: "20~23초 숏츠 주문서", file: "Day06_Skills_Connectors_실행서_v2.md" },
   { track: "guide", id: "day7", day: "7일", title: "20~23초 AI 쇼츠", file: "Day07_AI쇼츠.md" },
   { track: "guide", id: "references", day: "참고", title: "공식 레퍼런스", file: "01_레퍼런스_목록.md" },
+  { track: "home", id: "h0", day: "안내", title: "둘째 날 과제란?", file: "home-intro.md" },
+  { track: "home", id: "h1", day: "1일", title: "우리 집 식단표", file: "home-day1.md" },
+  { track: "home", id: "h2", day: "2일", title: "우리 집 비서 방", file: "home-day2.md" },
+  { track: "home", id: "h3", day: "3일", title: "초대 카드 · 주간 계획표", file: "home-day3.md" },
+  { track: "home", id: "h4", day: "4일", title: "이번 주 할 일 한눈에", file: "home-day4.md" },
+  { track: "home", id: "h5", day: "5일", title: "집안일 체크판", file: "home-day5.md" },
   { track: "5min", id: "m0", day: "안내", title: "폰으로 5분이란?", file: "5min-intro.md" },
   { track: "5min", id: "m1", day: "1일", title: "폰에서도 화면이 됩니다", file: "5min-day1.md" },
   { track: "5min", id: "m2", day: "2일", title: "프로젝트 기억 확인", file: "5min-day2.md" },
@@ -118,7 +124,7 @@ async function loadLesson() {
     if (!parser) throw new Error("교재 변환기를 불러오지 못했습니다.");
     content.innerHTML = parser(markdown);
     enhanceArticle();
-    document.title = `${lesson.title} | AI 왕초보 챌린지 2기`;
+    document.title = `${lesson.title} | AI 왕초보 챌린지 3기`;
     const trackLessons = lessons.filter(l => l.track === lesson.track);
     const trackIndex = trackLessons.findIndex(l => l.id === lesson.id);
     document.querySelector("#prevButton").disabled = trackIndex === 0;
@@ -129,8 +135,11 @@ async function loadLesson() {
     if (lesson.track === "5min") {
       hero.querySelector(".hero-eyebrow").textContent = "그밤PD · 5-MIN PLAY";
       hero.querySelector(".hero-title").textContent = "이불 속에서 5분, 폰으로 노는 시간";
+    } else if (lesson.track === "home") {
+      hero.querySelector(".hero-eyebrow").textContent = "그밤PD · DAY 2 OF 2";
+      hero.querySelector(".hero-title").textContent = "배운 걸 오늘 내 것으로";
     } else {
-      hero.querySelector(".hero-eyebrow").textContent = "그밤PD · 7 DAYS JOURNEY";
+      hero.querySelector(".hero-eyebrow").textContent = "그밤PD · 14 DAYS JOURNEY";
       hero.querySelector(".hero-title").textContent = "하루 한 걸음, 나도 만드는 사람";
     }
     const completeButton = document.querySelector("#completeButton");

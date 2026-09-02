@@ -304,6 +304,12 @@ html[data-lesson="day5"] .hero-block { background: var(--block-pink); }
 html[data-lesson="day6"] .hero-block { background: var(--block-coral); }
 html[data-lesson="day7"] .hero-block { background: var(--block-navy); color: var(--inverse-ink); }
 html[data-lesson="references"] .hero-block { background: var(--block-lime); }
+html[data-lesson="h0"] .hero-block { background: var(--block-cream); }
+html[data-lesson="h1"] .hero-block { background: var(--block-lime); }
+html[data-lesson="h2"] .hero-block { background: var(--block-lilac); }
+html[data-lesson="h3"] .hero-block { background: var(--block-cream); }
+html[data-lesson="h4"] .hero-block { background: var(--block-mint); }
+html[data-lesson="h5"] .hero-block { background: var(--block-pink); }
 
 .loading {
   font-family: var(--mono);
